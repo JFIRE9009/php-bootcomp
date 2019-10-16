@@ -7,6 +7,13 @@ body
 {
 	background: -webkit-gradient(linear, 0% 80%, 0% 100%, from(white), to(rgb(249, 200, 230)));
 }
+#herovideo
+{
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    z-index: -100;
+}
 .header
 {
 	position: relative;
@@ -25,33 +32,6 @@ body
 	z-index: 9;
 	top: 0px;
 	width: 100%;
-}
-.nav_links.sticky
-{
-	width: 100%;
-	position: fixed;
-	background-color: white;
-	box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0, 0.35);
-	animation-name: animationFade;
-	animation-delay: 1s;
-	animation-fill-mode: both;
-
-}
-.nav_links.sticky a
-{
-	color: rgb(249, 200, 230);
-}
-.nav_links.sticky a ul li.Logo .White
-{
-	display: none;
-}
-.nav_links.sticky a ul li.Logo .Black
-{
-	display: inline-block;
-}
-.nav_links.sticky .nav_icon span
-{
-	background: rgb(249, 200, 230)	
 }
 .nav_links ul
 {
@@ -73,9 +53,13 @@ body
 	text-shadow: 3px 3px rgb(255, 222, 242);
 	color: rgb(249, 200, 230);
 	padding: 0.25rem 0;
-	margin: 0 1.80rem;/* 
-	border: 5px solid rgb(249, 200, 230); */
+	margin: 0 1.80rem;
 	text-transform: uppercase;
+}
+.nav_links ul li a:hover
+{
+	font-size: 2.3rem;
+	text-shadow: .25rem .25rem rgb(255, 214, 238);
 }
 .nav_links ul li.Logo .Black
 {
@@ -116,7 +100,7 @@ body
 {
 	 width: 30px;
 }
-.side_nav.open
+.side_nav:target
 {  
 	opacity: 1;
 	visibility: visible;
@@ -131,7 +115,7 @@ body
 	color: white;
 	position: fixed;
 	left: 0px;
-	top: 96px;
+	top: 0px;
 	z-index: 99;
 	height: 100%;
 	width: 100%;
@@ -273,76 +257,3 @@ ul.social_icons.list_inline
 < INDEX.HTML >
 */
 
-form 
-{
-	border: 3px solid rgb(249, 200, 230);
-	border-radius: 3px;
-}
-
-input[type=text], input[type=password]
-{
-width: 50%;
-padding: 12px 20px;
-margin: 8px 0;
-display: inline-block;
-border: 1px solid rgb(249, 200, 230);
-box-sizing: border-box;
-}
-
-button
-{
-background-color: white;
-color: rgb(249, 200, 230);
-padding: 14px 20px;
-margin: 8px 0;
-border: 3px solid rgb(249, 200, 230);
-border-radius: 3px;
-cursor: pointer;
-width: 100%;
-}
-
-button:hover
-{
-	background-color: rgba(252, 213, 237, .2);
-}
-
-.cancelbtn 
-{
-width: auto;
-padding: 10px 18px;
-background-color: white;
-}
-
-/* Center the avatar image inside this container */
-.imgcontainer {
-text-align: center;
-margin: 24px 0 12px 0;
-}
-
-/* Avatar image */
-img.avatar {
-width: 40%;
-border-radius: 50%;
-}
-
-/* Add padding to containers */
-.container {
-padding: 16px;
-}
-
-/* The "Forgot password" text */
-span.psw {
-float: right;
-padding-top: 16px;
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-span.psw {
-	display: block;
-	float: none;
-}
-.cancelbtn {
-	width: 100%;
-}
-}
