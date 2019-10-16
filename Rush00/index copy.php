@@ -5,13 +5,14 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<link rel = "stylesheet" href = "css/style.css">
+		<link rel = "stylesheet" href = "css/style.css";>
 		<link rel = "stylesheet"  href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel = "stylesheet" href = "https://fonts.googleapis.com/css?family=Liu+Jian+Mao+Cao&display=swap">
 		<link rel = "stylesheet"  href = "https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap">
 	</head>
 	<body>
 		<header class = "header">
+		<div class = "login_box"></div>
 			<nav class = "nav_links">
 				<ul>
 					<li><a href = "">Home</a></li>
@@ -22,7 +23,7 @@
 					<li><a href = "">Blog</a></li>
 					<li><a href = "">Contact</a></li>
 					<li><a href = "">Client</a></li>
-					<li><a href = "http://localhost:8080/rush00/login.php">Login</a><li>
+					<li><a href = "">Pricing </a></li>
 				</ul>
 				<a class = "nav_icon" href = ""><span></span><span></span><span></span></a>
 			</nav>
