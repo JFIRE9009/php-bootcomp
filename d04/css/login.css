@@ -1,0 +1,86 @@
+
+body
+{
+	height: 100%;
+	background: -webkit-gradient(linear, 0% 80%, 0% 100%, from(white), to(rgb(249, 200, 230))) no-repeat center center fixed;
+	background-size: cover;
+}
+form 
+{
+	position: relative;
+	margin: 100px auto;
+	border: 3px solid rgb(249, 200, 230);
+	border-radius: 15px;
+	width: 30vw;
+	height: 30vh;
+}
+.title
+{
+	background-color: rgb(249, 200, 230);
+	float: left;
+	padding: 2px;
+	border: 1px solid rgb(249, 200, 230);
+	border-radius: 3px;
+	margin: 15px;
+	height: 2.2vh;
+	width: 1.1vw;
+
+}
+.fill
+{
+	position: absolute;
+	float: left;
+	margin: 10px auto;
+	width: 24vw;
+	padding: 1vh .5vw;
+	border: 1px solid rgb(249, 200, 230);
+	box-sizing: border-box;
+}
+button
+{
+	font-size: 0.75vw;
+	background-color: white;
+	color: rgb(249, 200, 230);
+	padding: 14px 20px;
+	margin: auto 150%;
+	border: 3px solid rgb(249, 200, 230);
+	border-radius: 3px;
+	cursor: pointer;
+	width: 6.5vw;
+}
+button:hover
+{
+	background-color: rgba(252, 213, 237, .2);
+}
+.Remember
+{
+	margin: 10px -33%;
+}
+.Remember2
+{
+	margin: 10px 37%;
+}
+.cancelbtn 
+{
+	margin: auto 160%;
+	width: 100px;
+	padding: 10px 0px;
+	background-color: white;
+}
+.container 
+{
+	border-bottom-left-radius: 11px;
+	border-bottom-right-radius: 11px;
+	padding: 16px;
+}
+span.psw 
+{
+	padding-top: 16px;
+}
+@media screen and (max-width: 100px) 
+{
+span.psw 
+{
+	display: block;
+}
+}
