@@ -1,6 +1,6 @@
 <?php
+	require('./database.php');
 	session_start();
-	include('database.php');
 	try {
 		$connection = new PDO("mysql:host=$my_server", $my_user, $my_pswd);
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -18,8 +18,8 @@
 			id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 			firstname VARCHAR(100) NOT NULL,
 			lastname VARCHAR(100) NOT NULL,
-			username VARCHAR(100) NOT NULL,
-			email VARCHAR(100),
+			username VARCHAR(100) UNIQUE NOT NULL,
+			email VARCHAR(100) UNIQUE NOT NULL,
 			password VARCHAR(100) NOT NULL
 			)";
 		echo "Table created successfully<br>";

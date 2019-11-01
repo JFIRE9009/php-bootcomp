@@ -14,28 +14,31 @@
 	<header class = "header">
 			<nav class = "nav_links">
 				<ul>
-					<li><a href = "">Home</a></li>
-					<li><a href = "">Shop</a></li>
-					<li><a href = "">Team</a></li>
-					<li><a href = "">Work</a></li>
-					<li class = "Logo"><a href = ""><img src = "img/Birdy.png" alt = " " class = "White"><img class = "Black" src = "img/Birdy.png" alt = ""></a></li>
-					<li><a href = "">Blog</a></li>
-					<li><a href = "">Contact</a></li>
-					<li><a href = "">Client</a></li>
-					<li><a href = "http://localhost:8080/d04/login.php">Login</a></li>
+					<li><a href = "index.php">Home</a></li>
+					<li><a href = "">Gallery</a></li>
+					<li><a href = "profile.php">Profile</a></li>
+					<li class = "Logo"><a href = "index.php"><img src = "img/Birdy.png" alt = " " class = "White"><img class = "Black" src = "img/Birdy.png" alt = ""></a></li>
+					<li><a href = "login.php">Login</a></li>
+					<li><a href = "register.php">Register</a></li>
+					<li><a href = "./model/logout_user.php">Logout</a></li>
 				</ul>
 				<a class = "nav_icon" href = ""><span></span><span></span><span></span></a>
 			</nav>
 		</header>
+		<?php
+			session_start();
+			if ($_SESSION["username"]) 
+				echo "Welcome ".$_SESSION["username"];
+		?>
 		<div style = "height: 500px;"></div>
 		<div class = "side_nav">
 			<div class = "side_logo"><a href = ""><img src = "img/Birdy.png" alt = ""></a></div>
 			<nav class = "nav_links2">
 				<ul>
 					<li><a href = ""><span>01.</span>Home</a></li>
-					<li><a href = ""><span>02.</span>Features</a></li>
-					<li><a href = ""><span>03.</span>Cart</a></li>
-					<li><a href = ""><span>04.</span>Shop</a></li>
+					<li><a href = ""><span>02.</span>Gallery</a></li>
+					<li><a href = ""><span>03.</span>Profile</a></li>
+					<li><a href = ""><span>04.</span>Settings</a></li>
 				</ul>
 			</nav>                                                                                                                                                                                                                                                                              
 			<ul class="social_icons list_inline">

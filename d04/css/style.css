@@ -7,18 +7,11 @@ body
 {
 	background: -webkit-gradient(linear, 0% 80%, 0% 100%, from(white), to(rgb(249, 200, 230)));
 }
-#herovideo
-{
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    z-index: -100;
-}
 .header
 {
 	position: relative;
 	overflow: hidden;
-	width: 100%;
+	width: 99vw;
 	height: 45.15vh;
 	padding-top: 20px;
 }
@@ -48,7 +41,7 @@ body
 	text-decoration: none;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-style: 1px solid black;
-	font-size: 2.2rem;
+	font-size: 2.4vw;
 	-webkit-text-stroke: 2px rgb(253, 179, 225);
 	text-shadow: 3px 3px rgb(255, 222, 242);
 	color: rgb(249, 200, 230);
@@ -58,12 +51,17 @@ body
 }
 .nav_links ul li a:hover
 {
-	font-size: 2.3rem;
+	font-size: 2.45vw;
 	text-shadow: .25rem .25rem rgb(255, 214, 238);
 }
 .nav_links ul li.Logo .Black
 {
 	display: none;
+}
+.nav_links ul li.Logo .White
+{
+	width: 15vw;
+	height: 25vh;
 }
 .nav_links ul li.Logo a
 {
