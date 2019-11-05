@@ -20,7 +20,9 @@
 			lastname VARCHAR(100) NOT NULL,
 			username VARCHAR(100) UNIQUE NOT NULL,
 			email VARCHAR(100) UNIQUE NOT NULL,
-			password VARCHAR(100) NOT NULL
+			password VARCHAR(100) NOT NULL,
+			vkey VARCHAR(32) NOT NULL,
+			verified BOOLEAN NOT NULL
 			)";
 		echo "Table created successfully<br>";
 		$connection->exec($sql);

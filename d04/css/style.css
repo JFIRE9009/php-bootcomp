@@ -5,7 +5,9 @@ html
 }
 body
 {
-	background: -webkit-gradient(linear, 0% 80%, 0% 100%, from(white), to(rgb(249, 200, 230)));
+	background: -webkit-gradient(linear, 0% 80%, 0% 100%, from(white), to(rgb(249, 200, 230))) no-repeat center center fixed;
+	background-size: cover;
+	text-align: center;
 }
 .header
 {

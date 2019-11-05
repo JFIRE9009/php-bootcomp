@@ -1,6 +1,7 @@
 <?php
 	require('../config/connect.php');
 	session_start();
+
 	try
 	{
 		$username = $_POST['username'];

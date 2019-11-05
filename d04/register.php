@@ -34,7 +34,7 @@
 						<tr><td><button type="submit" name="register_btn">Register</button></td></tr>
 						<label>Already have an account?</label>
 						<button type="button"><a href="login.php">Login</a></button>
-						<button type="button"><a href="./model/reset_account.php">Forgotten password?</a></button>
+						<button type="button"><a href="./reset_account.php">Forgotten password?</a></button>
 						</tr>
 					</div>
 				</table>
