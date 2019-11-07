@@ -6,6 +6,10 @@ body
 	background-size: cover;
 	text-align: center;
 }
+.pop
+{
+	color: rebeccapurple;
+}
 .header
 {
 	position: relative;

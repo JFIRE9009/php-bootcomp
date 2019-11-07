@@ -1,16 +1,18 @@
 <?php
 	session_start();
-	$_SESSION['vpass'] = $_POST['password'];
+	$hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
 	$email = $_POST['email'];
+	$vkey = $_SESSION['vpass'];
 		$message = "
 		Change password by clicking link.
 		------------------------
 		Username: '.$_POST[username].'
-		E-Mail: '.$_POST[email].'
+		E-Mail: '.$email.'
 		------------------------
 		
-		Please click this link to activate your account:
-		http://localhost:8080/d04/model/changepassword2.php?email=$email
+		Please click this link to change your password:
+		http://localhost:8080/d04/model/changepassword2.php?email=$email&vkey=$vkey&hash=$hash
 	";
 	mail($_POST['email'], Confirmation, $message, 'From noreply@cascade.com');
+	echo "<label class = pop>An E-Mail has been sent for confirmation</label>";
 ?>

@@ -6,23 +6,24 @@
 	{
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-		$query = "SELECT * FROM users WHERE username = :username AND password = :password";
-		$statement = $connection->prepare($query);
-		$statement->bindParam(':username', $username);
-		$statement->bindParam(':password', $password);
-		$statement->execute();
 
-		$count = $statement->rowCount();
-		if ($count > 0)
+		$query = $connection->prepare("SELECT password FROM users WHERE username = ?");
+		$query->execute(array($username));
+		if (password_verify($password, $query->fetchColumn()))
 		{
-			$_SESSION["loggedin"] = "true";
-			$_SESSION["username"] = $username;
-			header("location: ../index.php");
-		}
-		else
-		{
-			$message = '<label>Wrong Data</label>';
-			echo $message;
+			$count = $query->rowCount();
+			if ($count > 0)
+			{
+				$_SESSION["loggedin"] = "true";
+				$_SESSION['vpass'] = $vkey;
+				$_SESSION["username"] = $username;
+				header("location: ../index.php");
+			}
+			else
+			{
+				$message = '<label>Wrong Data</label>';
+				echo $message;
+			}
 		}
 	}
 	catch(PDOException $e) {

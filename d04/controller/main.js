@@ -40,12 +40,7 @@ photoButton.addEventListener('click', function(e)
 {
 	takePicture();
 	e.preventDefault();
-}.then(download));
-
-clearButton.addEventListener('click', function(e)
-{
-	photos.innerHTML = '';
-});
+}, false);
 
 function takePicture()
 {
@@ -61,13 +56,4 @@ function takePicture()
 		img.setAttribute('src', imgUrl);
 		photos.appendChild(img);
 	}
-}
-
-function download(blob)
-{
-	let a = document.createElement('a');
-	a.href = URL.createObjectURL(blob);
-	a.download = 'screenshot.jpg';
-	document.body.appendChild(a);
-	a.click();
 }

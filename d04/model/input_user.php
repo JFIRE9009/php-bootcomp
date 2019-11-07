@@ -27,7 +27,6 @@
 	try 
 	{
 		$sql = "INSERT INTO Users(firstname, lastname, username, email, password, vkey, verified) VALUES ('{$_POST[firstname]}', '{$_POST[lastname]}', '{$_POST[username]}', '{$_POST[email]}', '$hash', '$vkey', 0)";
-		mail("{$_POST[email]}", Confirmation, $message, 'From noreply@cascade.com');
 		$statement = $connection->prepare($sql);
 		$statement->bindParam(':username', $username);
 		$statement->bindParam(':password', $password);
@@ -35,9 +34,16 @@
 		$statement->bindParam(':lastname', $lastname);
 		$email = htmlspecialchars($_POST['email']);
 		$statement->execute();
-		echo "An email with a verification link has been sent to you.";
+		if ($count = $statement->rowCount())
+		{
+			mail($email, Confirmation, $message, 'From noreply@cascade.com');
+			echo "An email with a verification link has been sent to you.";
+		}
+		else
+			echo "Something went wrong";
 	}
-	catch(PDOException $e) {
+	catch(PDOException $e) 
+	{
 		if ($e->getCode() == 23000)
 			echo "Duplicate info";
 		else
