@@ -1,15 +1,14 @@
 <?php
 	require('./../config/connect.php');
-	session_start();
 	
 	if ($_POST['password_1'] != $_POST['password_2'])
 		die("Passwords do not match");
 
-	$username = htmlspecialchars($_POST['username']);
-	$password = htmlspecialchars($_POST['password']);
 	$firstname = htmlspecialchars($_POST['firstname']);
-	$email = htmlspecialchars($_POST['email']);
 	$lastname = htmlspecialchars($_POST['lastname']);
+	$username = htmlspecialchars($_POST['username']);
+	$email = htmlspecialchars($_POST['email']);
+	$password = htmlspecialchars($_POST['password']);
 	$hash = password_hash($_POST['password_1'], PASSWORD_BCRYPT);
 	$vkey = md5($_POST['username']);
 
@@ -26,16 +25,20 @@
 
 	try 
 	{
-		$sql = "INSERT INTO Users(firstname, lastname, username, email, password, vkey, verified) VALUES ('{$_POST[firstname]}', '{$_POST[lastname]}', '{$_POST[username]}', '{$_POST[email]}', '$hash', '$vkey', 0)";
+		$sql = "INSERT INTO Users(firstname, lastname, username, email, password, vkey, verified) VALUES (:firstname, :lastname, :username, :email, :hash, :vkey, 0)";
 		$statement = $connection->prepare($sql);
-		$statement->bindParam(':username', $username);
-		$statement->bindParam(':password', $password);
 		$statement->bindParam(':firstname', $firstname);
 		$statement->bindParam(':lastname', $lastname);
-		$email = htmlspecialchars($_POST['email']);
+		$statement->bindParam(':username', $username);
+		$statement->bindParam(':email', $email);
+		$statement->bindParam(':hash', $password);
+		$statement->bindParam(':vkey', $vkey);
 		$statement->execute();
 		if ($count = $statement->rowCount())
 		{
+			session_start();
+			$_SESSION['loggedin'] = false;
+			// $_SESSION['vpass'] = $vkey;
 			mail($email, Confirmation, $message, 'From noreply@cascade.com');
 			echo "An email with a verification link has been sent to you.";
 		}
