@@ -1,4 +1,0 @@
-<?php
-	echo str_repeat("X", 1000);
-	echo "\n";
-?>
