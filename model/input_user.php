@@ -20,7 +20,7 @@
 		E-Mail: '.$_POST[email].'
 		..............................
 		Please click this link to activate your account:
-		http://localhost:8080/d04/model/verify.php?vkey=$vkey
+		http://localhost:8080/camagru/model/verify.php?vkey=$vkey
 	";
 
 	try 
@@ -31,14 +31,14 @@
 		$statement->bindParam(':lastname', $lastname);
 		$statement->bindParam(':username', $username);
 		$statement->bindParam(':email', $email);
-		$statement->bindParam(':hash', $password);
+		$statement->bindParam(':hash', $hash);
 		$statement->bindParam(':vkey', $vkey);
 		$statement->execute();
 		if ($count = $statement->rowCount())
 		{
 			session_start();
 			$_SESSION['loggedin'] = false;
-			// $_SESSION['vpass'] = $vkey;
+			$_SESSION['vpass'] = $vkey;
 			mail($email, Confirmation, $message, 'From noreply@cascade.com');
 			echo "An email with a verification link has been sent to you.";
 		}

@@ -3,7 +3,7 @@
 	session_start();
 	try
 	{
-		if ($_SESSION['loggedin'] == false)
+		if (!$_SESSION['loggedin'] || $_SESSION['loggedin'] == false)
 		{
 			$username = $_POST['username'];
 			$password = $_POST['password'];
@@ -25,6 +25,8 @@
 					echo $message;
 				}
 			}
+			else
+				echo "Wrong Data";
 		}
 		else
 			echo "You are already logged in";

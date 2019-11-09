@@ -18,8 +18,8 @@
 				<nav class = "nav_links">
 					<ul>
 						<li><a href = "index.php">Home</a></li>
-						<li><a href = "">Gallery</a></li>
-						<li><a href = "profile.php">Profile</a></li>
+						<li><a href = "gallery.php">Gallery</a></li>
+						<li><a href = "#">Profile</a></li>
 						<li class = "Logo"><a href = "index.php"><img src = "img/Birdy.png" alt = " " class = "White"><img class = "Black" src = "img/Birdy.png" alt = ""></a></li>
 						<li><a href = "login.php">Login</a></li>
 						<li><a href = "register.php">Register</a></li>
@@ -30,7 +30,7 @@
 		</header>
 		<?php
 			session_start();
-			if ($_SESSION['loggedin'] == false)
+			if (!$_SESSION['loggedin'] || $_SESSION['loggedin'] == false)
 			{
 				echo "
 					<form action = ./model/login_user.php method = POST>
@@ -45,7 +45,7 @@
 					</form>
 				";
 			}
-			elseif ($_SESSION['loggedin'] == true)
+			elseif ($_SESSION['loggedin'] && $_SESSION['loggedin'] == true)
 			{
 				echo "
 					<h1>Snap an Image!</h1>
@@ -62,6 +62,5 @@
 				";
 			}
 		?>
-		<script src = "./controller/main.js"></script>
 	</body>
 </html>

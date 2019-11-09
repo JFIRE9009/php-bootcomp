@@ -13,7 +13,7 @@
 			------------------------
 			
 			Please click this link to change your password:
-			http://localhost:8080/d04/model/changepassword2.php?email=$email&vkey=$vkey&hash=$hash
+			http://localhost:8080/camagru/model/changepassword2.php?email=$email&vkey=$vkey&hash=$hash
 		";
 		mail($_POST['email'], Confirmation, $message, 'From noreply@cascade.com');
 		echo "<label class = pop>An E-Mail has been sent for confirmation</label>";

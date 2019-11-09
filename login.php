@@ -11,10 +11,10 @@
 			<nav class = "nav_links">
 				<ul>
 					<li><a href = "index.php">Home</a></li>
-					<li><a href = "">Gallery</a></li>
+					<li><a href = "gallery.php">Gallery</a></li>
 					<li><a href = "profile.php">Profile</a></li>
 					<li class = "Logo"><a href = "index.php"><img src = "img/Birdy.png" alt = " " class = "White"><img class = "Black" src = "img/Birdy.png" alt = ""></a></li>
-					<li><a href = "login.php">Login</a></li>
+					<li><a href = "#">Login</a></li>
 					<li><a href = "register.php">Register</a></li>
 					<li><a href = "./model/logout_user.php">Logout</a></li>
 				</ul>
