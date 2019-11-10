@@ -22,7 +22,7 @@
                 {
                     $stmt = $connection->prepare("SELECT * FROM gallery");
                     $stmt->execute();
-                    $count = rowCount($stmt);
+                    $count = $stmt->rowCount();
                     $setImageOrder = $count + 1;
 
                     $stmt = $connection->prepare(

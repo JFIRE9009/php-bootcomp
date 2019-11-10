@@ -29,15 +29,17 @@
 						session_start();
 						require("./config/connect.php");
 						$stmt = $connection->prepare("SELECT * FROM gallery ORDER BY orderGallery DESC");
-						// $stmt->execute();
-						// $lolo = $stmt->fetch();
-						// var_dump($lolo);
-						echo "
-							<a href = '#'>
-								<div></div>
-								<h3>Username</h3>
-							</a>
-						";
+						$stmt->execute();
+						
+						while ($resC = $stmt->fetchAll())
+						{
+							echo "
+								<a href = '#'>
+									<div></div>
+									<h3> $_SESSION[username] </h3>
+								</a>
+							";
+						}
 					?>
 					<?php
 						session_start();
