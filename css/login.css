@@ -63,7 +63,7 @@ body
 }
 .nav_links ul li.Logo a
 {
-	margin: 0 4rem;
+	margin: 0 4vw;
 }
 .nav_icon
 {
@@ -96,6 +96,11 @@ body
 {
 	 width: 30px;
 }
+.gallery_container
+{
+	position: absolute;
+	margin: -7.5vw 36.5%;
+}
 form 
 {
 	justify-content: center;
@@ -112,7 +117,7 @@ form
 	justify-content: center;
 	display: inline-block;
 	position: relative;
-	margin: -8vh auto;
+	margin: 10vh auto;
 	border: 3px solid rgb(249, 200, 230);
 	border-radius: 15px;
 	width: 30vw;

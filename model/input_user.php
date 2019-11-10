@@ -1,6 +1,6 @@
 <?php
 	require('./../config/connect.php');
-	
+
 	if ($_POST['password_1'] != $_POST['password_2'])
 		die("Passwords do not match");
 
@@ -37,7 +37,10 @@
 		if ($count = $statement->rowCount())
 		{
 			session_start();
-			$_SESSION['loggedin'] = false;
+			$query = $connection->prepare("SELECT id FROM users WHERE username = :username");
+			$query->bindParam(":username", $username);
+			$query->execute();
+			$_SESSION['id'] = $query->fetchColumn();
 			$_SESSION['vpass'] = $vkey;
 			mail($email, Confirmation, $message, 'From noreply@cascade.com');
 			echo "An email with a verification link has been sent to you.";
