@@ -17,7 +17,7 @@
 					<li><a href = "#">Home</a></li>
 					<li><a href = "gallery.php">Gallery</a></li>
 					<li><a href = "profile.php">Profile</a></li>
-					<li class = "Logo"><a href = "index.php"><img src = "img/Birdy.png" alt = " " class = "White"><img class = "Black" src = "img/Birdy.png" alt = ""></a></li>
+					<li class = "Logo"><a href = "index.php"><img src = "img/randoms/Birdy.png" alt = " " class = "White"><img class = "Black" src = "img/Birdy.png" alt = ""></a></li>
 					<li><a href = "login.php">Login</a></li>
 					<li><a href = "register.php">Register</a></li>
 					<li><a href = "./model/logout_user.php">Logout</a></li>
@@ -32,7 +32,7 @@
 		?>
 		<div style = "height: 500px;"></div>
 		<div class = "side_nav">
-			<div class = "side_logo"><a href = ""><img src = "img/Birdy.png" alt = ""></a></div>
+			<div class = "side_logo"><a href = ""><img src = "img/random/Birdy.png" alt = ""></a></div>
 			<nav class = "nav_links2">
 				<ul>
 					<li><a href = ""><span>01.</span>Home</a></li>

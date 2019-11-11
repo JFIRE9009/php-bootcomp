@@ -40,11 +40,27 @@
 		$connection = new PDO("mysql:host=$my_server;dbname=$my_db", $my_user, $my_pswd);
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "CREATE TABLE Gallery (
-			idGallery INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+			uid INT(11) NOT NULL,
+			username VARCHAR(100) NOT NULL,
 			imgFullNameGallery LONGTEXT NOT NULL,
 			orderGallery LONGTEXT NOT NULL
 			)";
 		echo "Gallery table created successfully<br>";
+		$connection->exec($sql);
+	}
+	catch(PDOException $e)
+	{
+		echo $sql . "<br>" . $e->getMessage();
+	}
+	try
+	{
+		$connection = new PDO("mysql:host=$my_server;dbname=$my_db", $my_user, $my_pswd);
+		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$sql = "CREATE TABLE Likes (
+			uid INT(11) NOT NULL,
+			likes INT(11) NOT NULL
+			)";
+		echo "Likes table created successfully<br>";
 		$connection->exec($sql);
 	}
 	catch(PDOException $e)

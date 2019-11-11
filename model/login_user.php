@@ -15,6 +15,9 @@
 				$count = $query->rowCount();
 				if ($count > 0)
 				{
+					$stmt = $connection->prepare("SELECT id from users WHERE username = ?");
+					$stmt->execute(array($username));
+					$_SESSION["uid"] = $stmt->fetchColumn();
 					$_SESSION["loggedin"] = true;
 					$_SESSION["username"] = $username;
 					header("location: ../index.php");

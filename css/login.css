@@ -118,7 +118,7 @@ form
 	display: inline-block;
 	position: relative;
 	margin: 10vh auto;
-	border: 3px solid rgb(249, 200, 230);
+	/* border: 3px solid rgb(249, 200, 230); */
 	border-radius: 15px;
 	width: 30vw;
 	height: 30vh;
@@ -186,6 +186,30 @@ button:hover
 	border-radius: 3px;
 	cursor: pointer;
 	width: 6.5vw;
+}
+.sticker
+{
+	background-image: url("./../img/stickers/kitten.png");
+	position: absolute;
+	display:inline-block;
+	margin: 0 auto;
+	padding: .1vw;
+	width: 2.5vw;
+	height: 5vh;
+}
+.gal_img
+{
+	position: relative;
+	z-index: 1;
+	content:"0a0";
+	border-radius: 2vw;
+	border: .85rem solid rgb(249, 200, 230);
+	background: center;
+	background-size: cover;
+	margin: 0 auto;
+	/* padding: 1vw; */
+	width: 25vw;
+	height: 50vh;
 }
 .Remember
 {

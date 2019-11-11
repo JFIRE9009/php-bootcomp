@@ -1,5 +1,5 @@
 <?php
-    require("./../config/connect.php");
+    session_start();
     if (isset($_POST['gal_submit']))
     {
         $file = $_FILES['file'];
@@ -20,22 +20,28 @@
             {
                 if ($fileSize < 10000000)
                 {
+                    require_once("./../config/connect.php");
+                    $fileNameNew = uniqid('', true).".".$fileActualExt;
+                    $fileDest = "../img/uploads/".$fileNameNew;
+
                     $stmt = $connection->prepare("SELECT * FROM gallery");
                     $stmt->execute();
                     $count = $stmt->rowCount();
                     $setImageOrder = $count + 1;
+                    $uid = $_SESSION['uid'];
+                    $username = $_SESSION['username'];
 
                     $stmt = $connection->prepare(
-                        "INSERT INTO gallery(imgFullNameGallery, orderGallery)
-                        VALUES(:imgNameGallery, :orderGallery)
+                        "INSERT INTO gallery(uid, username, imgFullNameGallery, orderGallery)
+                        VALUES(:uid, :username, :imgNameGallery, :orderGallery)
                     ");
-                    $stmt->bindParam(":imgNameGallery", $fileName );
+                    $stmt->bindParam(":uid", $uid);
+                    $stmt->bindParam(":username", $username);
+                    $stmt->bindParam(":imgNameGallery", $fileNameNew );
                     $stmt->bindParam(":orderGallery", $setImageOrder);
                     $stmt->execute();
-                    // $fileNameNew = uniqid('', true).".".$fileActualExt;
-                    // $fileDest = "../img/uploads/".$fileNameNew;
-                    // move_uploaded_file($fileTmp, $fileDest);
-                    // echo "Upload success";
+                    move_uploaded_file($fileTmp, $fileDest);
+                    echo "Upload success";
                 }
                 else
                     echo "Uploaded image is too big";

@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link rel = "stylesheet" href = "css/login.css">
+		<link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<title>Gallery</title>
 	</head>
 	<body>
@@ -14,7 +15,7 @@
 					<li><a href = "index.php">Home</a></li>
 					<li><a href = "#">Gallery</a></li>
 					<li><a href = "profile.php">Profile</a></li>
-					<li class = "Logo"><a href = "index.php"><img src = "img/Birdy.png" alt = " " class = "White"></a></li>
+					<li class = "Logo"><a href = "index.php"><img src = "img/randoms/Birdy.png" alt = " " class = "White"></a></li>
 					<li><a href = "login.php">Login</a></li>
 					<li><a href = "register.php">Register</a></li>
 					<li><a href = "./model/logout_user.php">Logout</a></li>
@@ -26,17 +27,17 @@
 			<div class = "wrapper">
 				<div class = "gallery_container">
 					<?php
-						session_start();
 						require("./config/connect.php");
 						$stmt = $connection->prepare("SELECT * FROM gallery ORDER BY orderGallery DESC");
 						$stmt->execute();
-						
-						while ($resC = $stmt->fetchAll())
+						// $query = $connection->prepare("SELECT likes FROM likes")
+						while ($count = $stmt->fetch(PDO::FETCH_ASSOC))
 						{
 							echo "
 								<a href = '#'>
-									<div></div>
-									<h3> $_SESSION[username] </h3>
+									<div class = 'gal_img' style = 'background-image: url(img/uploads/".$count['imgFullNameGallery'].")'></div>
+									<h3>".$count['username']."</h3>
+									<a href = './model/like.php' <i class = 'fa fa-thumbs-up' aria-hidden = 'true'></i></a>
 								</a>
 							";
 						}
@@ -58,5 +59,6 @@
 				</div>
 			</div>
 		</section>
+		<div class = "footer"></div>
     </body>
 </html>
