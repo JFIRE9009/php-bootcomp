@@ -58,7 +58,8 @@
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "CREATE TABLE Likes (
 			uid INT(11) NOT NULL,
-			likes INT(11) NOT NULL
+			pid INT(11) NOT NULL,
+			UNIQUE KEY (`uid`, `pid`)
 			)";
 		echo "Likes table created successfully<br>";
 		$connection->exec($sql);

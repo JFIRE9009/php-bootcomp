@@ -101,6 +101,10 @@ body
 	position: absolute;
 	margin: -7.5vw 36.5%;
 }
+.gallery_container a
+{
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 form 
 {
 	justify-content: center;
@@ -111,10 +115,6 @@ form
 	border-radius: 15px;
 	width: 30vw;
 	height: 30vh;
-}
-.gallery_container a
-{
-	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .gal_form
 {

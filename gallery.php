@@ -7,6 +7,7 @@
 		<link rel = "stylesheet" href = "css/login.css">
 		<link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<title>Gallery</title>
+		<script src = './controller/script.js'></script>
 	</head>
 	<body>
 		<header class = "header">
@@ -39,7 +40,9 @@
 									<h3>".$count['username']."</h3>
 								</a>
 							";
-							echo "<i class = 'fa fa-thumbs-o-up like_btn' data-id = '".$count['orderGallery']."'> Like!</i>";
+							?>
+								<i class = 'fa fa-thumbs-o-up like_btn' id="like-<?php echo $count['orderGallery']; ?>" onclick="like(<?php echo $count['orderGallery']; ?>)"> Like!</i>
+							<?php
 						}
 					?>
 					<?php
@@ -61,5 +64,4 @@
 		</section>
 		<div class = "footer"></div>
     </body>
-	<script src = './controller/script.js'></script>
 </html>
