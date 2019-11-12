@@ -112,16 +112,34 @@ form
 	width: 30vw;
 	height: 30vh;
 }
-.gal_form 
+.gallery_container a
+{
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.gal_form
 {
 	justify-content: center;
 	display: inline-block;
 	position: relative;
 	margin: 10vh auto;
-	/* border: 3px solid rgb(249, 200, 230); */
+	border: 3px solid rgb(249, 200, 230);
 	border-radius: 15px;
 	width: 30vw;
 	height: 30vh;
+}
+.gal_img
+{
+	position: relative;
+	z-index: 1;
+	content:"0a0";
+	border-radius: 2vw;
+	border: .85rem solid rgb(249, 200, 230);
+	background: center;
+	background-size: cover;
+	margin: 0 auto;
+	padding: 1vw;
+	width: 25vw;
+	height: 50vh;
 }
 .reg_form
 {
@@ -175,8 +193,8 @@ button:hover
 }
 .gal_input
 {
-	display: inline-block;
-	margin: 10%;
+	/* display: inline-block; */
+	/* margin: 10%; */
 	outline: none;
 	font-size: 0.75vw;
 	background-color: white;
@@ -186,30 +204,6 @@ button:hover
 	border-radius: 3px;
 	cursor: pointer;
 	width: 6.5vw;
-}
-.sticker
-{
-	background-image: url("./../img/stickers/kitten.png");
-	position: absolute;
-	display:inline-block;
-	margin: 0 auto;
-	padding: .1vw;
-	width: 2.5vw;
-	height: 5vh;
-}
-.gal_img
-{
-	position: relative;
-	z-index: 1;
-	content:"0a0";
-	border-radius: 2vw;
-	border: .85rem solid rgb(249, 200, 230);
-	background: center;
-	background-size: cover;
-	margin: 0 auto;
-	/* padding: 1vw; */
-	width: 25vw;
-	height: 50vh;
 }
 .Remember
 {

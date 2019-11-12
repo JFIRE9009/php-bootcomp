@@ -34,12 +34,12 @@
 						while ($count = $stmt->fetch(PDO::FETCH_ASSOC))
 						{
 							echo "
-								<a href = '#'>
+								<a>
 									<div class = 'gal_img' style = 'background-image: url(img/uploads/".$count['imgFullNameGallery'].")'></div>
 									<h3>".$count['username']."</h3>
-									<a href = './model/like.php' <i class = 'fa fa-thumbs-up' aria-hidden = 'true'></i></a>
 								</a>
 							";
+							echo "<i class = 'fa fa-thumbs-o-up like_btn' data-id = '".$count['orderGallery']."'> Like!</i>";
 						}
 					?>
 					<?php
@@ -61,4 +61,5 @@
 		</section>
 		<div class = "footer"></div>
     </body>
+	<script src = './controller/script.js'></script>
 </html>
