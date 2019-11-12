@@ -15,9 +15,9 @@
 					<li><a href = "gallery.php">Gallery</a></li>
 					<li><a href = "profile.php">Profile</a></li>
 					<li class = "Logo"><a href = "index.php"><img src = "img/randoms/Birdy.png" alt = " " class = "White"><img class = "Black" src = "img/Birdy.png" alt = ""></a></li>
-					<li><a href = "login.php">Login</a></li>
 					<li><a href = "#">Register</a></li>
-					<li><a href = "./model/logout_user.php">Logout</a></li>
+					<li><?php if (!$_SESSION['loggedin'] || $_SESSION['loggedin'] === false){ echo "<a href = 'login.php'>Login</a>";}; ?></li>
+					<li><?php if ($_SESSION['loggedin'] && $_SESSION['loggedin'] === true){ echo "<a href = './model/logout_user.php'>Logout</a>";}; ?></li>
 					</ul>
 					<a class = "nav_icon" href = ""><span></span><span></span><span></span></a>
 				</nav>

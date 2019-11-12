@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -13,13 +14,13 @@
 		<header class = "header">
 				<nav class = "nav_links">
 					<ul>
-					<li><a href = "index.php">Home</a></li>
-					<li><a href = "#">Gallery</a></li>
-					<li><a href = "profile.php">Profile</a></li>
-					<li class = "Logo"><a href = "index.php"><img src = "img/randoms/Birdy.png" alt = " " class = "White"></a></li>
-					<li><a href = "login.php">Login</a></li>
-					<li><a href = "register.php">Register</a></li>
-					<li><a href = "./model/logout_user.php">Logout</a></li>
+						<li><a href = "index.php">Home</a></li>
+						<li><a href = "#">Gallery</a></li>
+						<li><a href = "profile.php">Profile</a></li>
+						<li class = "Logo"><a href = "index.php"><img src = "img/randoms/Birdy.png" alt = " " class = "White"></a></li>
+						<li><a href = "register.php">Register</a></li>
+						<li><?php if (!$_SESSION['loggedin'] || $_SESSION['loggedin'] === false){ echo "<a href = 'login.php'>Login</a>";}; ?></li>
+						<li><?php if ($_SESSION['loggedin'] && $_SESSION['loggedin'] === true){ echo "<a href = './model/logout_user.php'>Logout</a>";}; ?></li>
 					</ul>
 					<a class = "nav_icon" href = ""><span></span><span></span><span></span></a>
 				</nav>
@@ -31,7 +32,6 @@
 						require("./config/connect.php");
 						$stmt = $connection->prepare("SELECT * FROM gallery ORDER BY orderGallery DESC");
 						$stmt->execute();
-						// $query = $connection->prepare("SELECT likes FROM likes")
 						while ($count = $stmt->fetch(PDO::FETCH_ASSOC))
 						{
 							echo "
@@ -41,7 +41,15 @@
 								</a>
 							";
 							?>
-								<i class = 'fa fa-thumbs-o-up like_btn' id="like-<?php echo $count['orderGallery']; ?>" onclick="like(<?php echo $count['orderGallery']; ?>)"> Like!</i>
+							<i class = 'fa fa-thumbs-o-up like_btn' id="like-<?php echo $count['orderGallery']; ?>" onclick="like(<?php echo $count['orderGallery']; ?>)"><a> Like!</a></i>
+								<?php
+									$pid = $count['orderGallery'];
+									$statement = $connection->prepare("SELECT * FROM likes WHERE pid = :pid");
+									$statement->bindParam(":pid", $pid);
+									$statement->execute();
+									$stmt_c = $statement->rowCount();
+									echo "<a>$stmt_c</a>";
+								?>
 							<?php
 						}
 					?>

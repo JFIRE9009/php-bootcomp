@@ -99,11 +99,11 @@ body
 .gallery_container
 {
 	position: absolute;
-	margin: -7.5vw 36.5%;
+	margin: -3.5vw 36.5%;
 }
 .gallery_container a
 {
-	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	font-family: fantasy;
 }
 form 
 {
@@ -133,7 +133,7 @@ form
 	z-index: 1;
 	content:"0a0";
 	border-radius: 2vw;
-	border: .85rem solid rgb(249, 200, 230);
+	border: .5vw solid rgb(249, 200, 230);
 	background: center;
 	background-size: cover;
 	margin: 0 auto;
@@ -193,8 +193,8 @@ button:hover
 }
 .gal_input
 {
-	/* display: inline-block; */
-	/* margin: 10%; */
+	display: inline-block;
+	margin: 10%;
 	outline: none;
 	font-size: 0.75vw;
 	background-color: white;

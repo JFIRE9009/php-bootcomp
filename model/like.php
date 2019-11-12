@@ -3,12 +3,12 @@
     session_start();
     $uid = $_SESSION['uid'];
 
-    $postid = $_POST["postid"];
+    var_dump($postid = $_POST["postid"]);
     $stmt = $connection->prepare("INSERT INTO likes(`uid`, `pid`) VALUES (?, ?)");
     try
     {
         http_response_code(200);
-        $stmt->execute(array($uid, 2));
+        $stmt->execute(array($uid, $postid));
     }
     catch (PDOException $e)
     {
