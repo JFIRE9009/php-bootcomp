@@ -176,6 +176,11 @@ body
 {
 	color: black;
 }
+.welcome
+{
+	font-size: 2vw;
+	font-family: cursive;
+}
 .social_icons a
 {
 	color: rgb(249, 200, 230);

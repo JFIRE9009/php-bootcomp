@@ -22,6 +22,7 @@
 					<li><a href = "register.php">Register</a></li>
 					<li><?php if (!$_SESSION['loggedin'] || $_SESSION['loggedin'] === false){ echo "<a href = 'login.php'>Login</a>";}; ?></li>
 					<li><?php if ($_SESSION['loggedin'] && $_SESSION['loggedin'] === true){ echo "<a href = './model/logout_user.php'>Logout</a>";}; ?></li>
+					<li><a href = "#">Settings</a></li>
 				</ul>
 				<a class = "nav_icon" href = ""><span></span><span></span><span></span></a>
 			</nav>
@@ -29,7 +30,7 @@
 		<?php
 			session_start();
 			if ($_SESSION["username"]) 
-				echo "Welcome ".$_SESSION["username"];
+				echo "<a class = 'welcome'>Welcome $_SESSION[username]!</a> ";
 		?>
 		<div style = "height: 500px;"></div>
 		<div class = "side_nav">

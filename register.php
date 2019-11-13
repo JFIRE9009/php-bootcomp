@@ -18,6 +18,7 @@
 					<li><a href = "#">Register</a></li>
 					<li><?php if (!$_SESSION['loggedin'] || $_SESSION['loggedin'] === false){ echo "<a href = 'login.php'>Login</a>";}; ?></li>
 					<li><?php if ($_SESSION['loggedin'] && $_SESSION['loggedin'] === true){ echo "<a href = './model/logout_user.php'>Logout</a>";}; ?></li>
+					<li><a href = "#">Settings</a></li>
 					</ul>
 					<a class = "nav_icon" href = ""><span></span><span></span><span></span></a>
 				</nav>

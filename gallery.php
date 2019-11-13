@@ -21,6 +21,7 @@
 						<li><a href = "register.php">Register</a></li>
 						<li><?php if (!$_SESSION['loggedin'] || $_SESSION['loggedin'] === false){ echo "<a href = 'login.php'>Login</a>";}; ?></li>
 						<li><?php if ($_SESSION['loggedin'] && $_SESSION['loggedin'] === true){ echo "<a href = './model/logout_user.php'>Logout</a>";}; ?></li>
+					<li><a href = "#">Settings</a></li>
 					</ul>
 					<a class = "nav_icon" href = ""><span></span><span></span><span></span></a>
 				</nav>
@@ -37,11 +38,11 @@
 							echo "
 								<a>
 									<div class = 'gal_img' style = 'background-image: url(img/uploads/".$count['imgFullNameGallery'].")'></div>
-									<h3>".$count['username']."</h3>
+									<h3>Posted by: ".$count['username']."</h3>
 								</a>
 							";
 							?>
-							<i class = 'fa fa-thumbs-o-up like_btn' id="like-<?php echo $count['orderGallery']; ?>" onclick="like(<?php echo $count['orderGallery']; ?>)"><a> Like!</a></i>
+							<i class = 'fa fa-thumbs-o-up like_btn' id = "like-<?php echo $count['orderGallery']; ?>" onclick = "like(<?php echo $count['orderGallery']; ?>)"><a> Like!</a></i>
 								<?php
 									$pid = $count['orderGallery'];
 									$statement = $connection->prepare("SELECT * FROM likes WHERE pid = :pid");
@@ -50,6 +51,7 @@
 									$stmt_c = $statement->rowCount();
 									echo "<a>$stmt_c</a>";
 								?>
+								<i class = 'fa fa-trash-alt delete_btn' id = "delete_post-<?php echo $pid; ?>" onclick = "delete_post(<?php echo $pid; ?>)"><a class = "delete_btn">  Delete your post?</a><i>
 							<?php
 						}
 					?>
