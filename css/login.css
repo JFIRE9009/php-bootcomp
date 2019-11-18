@@ -44,7 +44,7 @@ body
 	text-decoration: none;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-style: 1px solid black;
-	font-size: 2.4vw;
+	font-size: 2vw;
 	-webkit-text-stroke: 2px rgb(253, 179, 225);
 	text-shadow: 3px 3px rgb(255, 222, 242);
 	color: rgb(249, 200, 230);
@@ -126,6 +126,17 @@ form
 	border-radius: 15px;
 	width: 30vw;
 	height: 30vh;
+}
+.vid_img
+{
+	position: relative;
+	z-index: 1;
+	content:"0a0";
+	border-radius: 2vw;
+	border: .5vw solid rgb(249, 200, 230);
+	background: center;
+	background-size: cover;
+	margin: 0 auto;
 }
 .gal_img
 {

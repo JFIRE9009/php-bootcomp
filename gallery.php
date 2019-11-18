@@ -11,62 +11,56 @@
 		<script src = './controller/script.js'></script>
 	</head>
 	<body>
-		<header class = "header">
-				<nav class = "nav_links">
-					<ul>
-						<li><a href = "index.php">Home</a></li>
-						<li><a href = "#">Gallery</a></li>
-						<li><a href = "profile.php">Profile</a></li>
-						<li class = "Logo"><a href = "index.php"><img src = "img/randoms/Birdy.png" alt = " " class = "White"></a></li>
-						<li><a href = "register.php">Register</a></li>
-						<li><?php if (!$_SESSION['loggedin'] || $_SESSION['loggedin'] === false){ echo "<a href = 'login.php'>Login</a>";}; ?></li>
-						<li><?php if ($_SESSION['loggedin'] && $_SESSION['loggedin'] === true){ echo "<a href = './model/logout_user.php'>Logout</a>";}; ?></li>
-					<li><a href = "#">Settings</a></li>
-					</ul>
-					<a class = "nav_icon" href = ""><span></span><span></span><span></span></a>
-				</nav>
-        </header>
+    	<?php require("header.php"); ?>
 		<section class = "gallery_links">
 			<div class = "wrapper">
 				<div class = "gallery_container">
 					<?php
 						require("./config/connect.php");
-						$stmt = $connection->prepare("SELECT * FROM gallery ORDER BY orderGallery DESC");
+						$stmt = $connection->prepare("SELECT * FROM gallery ORDER BY postid DESC");
 						$stmt->execute();
-						while ($count = $stmt->fetch(PDO::FETCH_ASSOC))
+						while ($img = $stmt->fetch(PDO::FETCH_ASSOC))
 						{
-							echo "
-								<a>
-									<div class = 'gal_img' style = 'background-image: url(img/uploads/".$count['imgFullNameGallery'].")'></div>
-									<h3>Posted by: ".$count['username']."</h3>
-								</a>
-							";
-							?>
-							<i class = 'fa fa-thumbs-o-up like_btn' id = "like-<?php echo $count['orderGallery']; ?>" onclick = "like(<?php echo $count['orderGallery']; ?>)"><a> Like!</a></i>
-								<?php
-									$pid = $count['orderGallery'];
-									$statement = $connection->prepare("SELECT * FROM likes WHERE pid = :pid");
-									$statement->bindParam(":pid", $pid);
-									$statement->execute();
-									$stmt_c = $statement->rowCount();
-									echo "<a>$stmt_c</a>";
-								?>
-								<i class = 'fa fa-trash-alt delete_btn' id = "delete_post-<?php echo $pid; ?>" onclick = "delete_post(<?php echo $pid; ?>)"><a class = "delete_btn">  Delete your post?</a><i>
+					?>
 							<?php
+								$pid = $img['postid'];
+								$statement = $connection->prepare("SELECT * FROM likes WHERE pid = :pid");
+								$statement->bindParam(":pid", $pid);
+								$statement->execute();
+								$like_count = $statement->rowCount();
+								$statement = $connection->prepare("SELECT COUNT(*) FROM `likes` WHERE `uid`=? AND `pid`=?");
+								$statement->execute(array($_SESSION["uid"], $pid));
+								$isliked = $statement->fetch()[0];
+							?>
+							<div id="delete_post-<?php echo $pid; ?>">
+							<a>
+								<div class = 'gal_img' style = 'background-image: url(img/uploads/<?php echo $img['imgFullNameGallery'] ?>)'></div>
+								<h3>Posted by: <?php echo $img['username'] ?></h3>
+							</a>
+							<i class = 'fa fa-thumbs-o-<?php echo !$isliked ? "up" : "down";?> like_btn' id = "like-<?php echo $img['postid']; ?>" onclick = "like(<?php echo $img['postid']; ?>)"><a> Like!</a></i>
+							<a id="like-count-<?php echo $pid; ?>"><?php echo $like_count; ?></a>
+							<?php
+							if ($img['username'] === $_SESSION['username'])
+							{
+							?>
+							<i class = 'fa fa-trash delete_btn' use-id="<?php echo $pid; ?>"><a class = "delete_btn">  Delete your post?</a></i>
+							</div>
+							<?php
+							}
 						}
 					?>
 					<?php
 						session_start();
 						if ($_SESSION['loggedin'] && $_SESSION['loggedin'] == true) 
 						{
-							echo "
-							<div>
-								<form method = 'POST' class = 'gal_form' action = 'model/upload.php' enctype = 'multipart/form-data'>
-									<input class = 'gal_input' type = 'file' name = 'file'/>
-									<button type = 'submit' name = 'gal_submit'>Upload Img</button>
-								</form>
-							</div>
-							";
+					?>
+					<div>
+						<form method = 'POST' class = 'gal_form' action = 'modal/upload.php' enctype = 'multipart/form-data'>
+							<input class = 'gal_input' type = 'file' name = 'file'/>
+							<button type = 'submit' name = 'gal_submit'>Upload Img</button>
+						</form>
+					</div>
+					<?php
 						}
 					?>
 				</div>

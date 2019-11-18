@@ -17,13 +17,13 @@
 						<li class = "Logo"><a href = "index.php"><img src = "img/randoms/Birdy.png" alt = " " class = "White"><img class = "Black" src = "img/Birdy.png" alt = ""></a></li>
 						<li><a href = "login.php">Login</a></li>
 						<li><a href = "register.php">Register</a></li>
-						<li><a href = "./model/logout_user.php">Logout</a></li>
+						<li><a href = "./modal/logout_user.php">Logout</a></li>
 					</ul>
 					<a class = "nav_icon" href = ""><span></span><span></span><span></span></a>
 				</nav>
 			</header>
 			<br>
-			<form action = "./model/changepassword.php" method = "POST">
+			<form action = "./modal/changepassword.php" method = "POST">
 				<table>
 					<div class = "container" style = "background-color:#f1f1f1">
 						<tr><td><img class ="title" src = "img/13_profile-512.png"><label></label><input class = "fill" type = "email" placeholder = "Enter Email" name = "email" required></td></tr>

@@ -1,59 +1,50 @@
-// let width = 500, 
-// 	height = 0,
-// 	filter = 'none';
-// 	streaming = false;
 
-// const video = document.getElementById('video');
-// const canvas = document.getElementById('canvas');
-// const photos = document.getElementById('photos');
-// const photoButton = document.getElementById('photo_button');
-// const clearButton = document.getElementById('clear_button');
-// const photoFilter = document.getElementById('photo_filter');
+window.addEventListener("load", () => {
+	var video = document.getElementById("video");
+	var canvas = document.getElementById("canvas");
+	var upload = document.getElementById("upload");
+	var capture = document.getElementById("capture");
+	var context = canvas.getContext("2d");
 
-navigator.mediaDevices.getUserMedia({video: true, audio: false})
-	.then(function(stream)
+	if (navigator.mediaDevices.getUserMedia)
 	{
-		video.srcObject = stream;
-		video.play();
+		navigator.mediaDevices.getUserMedia({video: true, audio: false}).then((stream) => {
+			video.srcObject = stream;
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
+
+	capture.addEventListener("click", () => {
+		canvas.height = video.offsetHeight;
+		canvas.width = video.offsetWidth;
+
+		context.drawImage(video, 0, 0);
 	});
-// .catch(function(err)
-// {
-	// console.log(`Error ${err}`);	
-// });
+	upload.addEventListener("change", () => {
+		if (upload.files.length > 0 && upload.files[0].type.match(/image\/*/))
+		{
+			var file = upload.files[0];
+			var img = new Image();
+			img.addEventListener("load", () => {
+				canvas.height = img.height;
+				canvas.width = img.width;
 
-// video.addEventListener('canplay', function(e)
-// {
-// 	if (!streaming)
-// 	{
-// 		height = video.videoHeight / (video.videoWidth / width);
-
-// 		video.setAttribute('width', width);
-// 		video.setAttribute('height', height);
-// 		canvas.setAttribute('width', width);
-// 		canvas.setAttribute('height', height);
-
-// 		streaming = true;		
-// 	}
-// }, false);
-
-// photoButton.addEventListener('click', function(e)
-// {
-// 	takePicture();
-// 	e.preventDefault();
-// }, false);
-
-// function takePicture()
-// {
-// 	const context = canvas.getContext('2d');
-
-// 	if (width && height)
-// 	{
-// 		canvas.width = width;
-// 		canvas.height = height;
-// 		context.drawImage(video, 0, 0, width, height);
-// 		const imgUrl = canvas.toDataUrl('image/png');
-// 		const img = document.createElement('img');
-// 		img.setAttribute('src', imgUrl);
-// 		photos.appendChild(img);
-// 	}
-// }
+				context.drawImage(img, 0, 0);
+				// console.log(canvas.toDataURL());
+			});
+			img.src = URL.createObjectURL(file);
+			var request = new XMLHttpRequest();
+			request.onload = () => 
+			{
+				if (request.status == 200)
+					console.log(request.responseText);
+				else if (request.status == 400)
+					console.log(request.responseText);
+			}
+			request.open("POST", "/camagru/modal/upload.php");
+			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			request.send("canvas=" + encodeURIComponent(canvas.toDataURL().replace("data:image/png;base64,", "")));
+		}
+	});
+});

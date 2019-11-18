@@ -9,27 +9,13 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<header class = "header">
-				<nav class = "nav_links">
-					<ul>
-						<li><a href = "index.php">Home</a></li>
-						<li><a href = "gallery.php">Gallery</a></li>
-						<li><a href = "#">Profile</a></li>
-						<li class = "Logo"><a href = "index.php"><img src = "img/randoms/Birdy.png" alt = " " class = "White"><img class = "Black" src = "img/Birdy.png" alt = ""></a></li>
-						<li><a href = "register.php">Register</a></li>
-					<li><?php if (!$_SESSION['loggedin'] || $_SESSION['loggedin'] === false){ echo "<a href = 'login.php'>Login</a>";}; ?></li>
-					<li><?php if ($_SESSION['loggedin'] && $_SESSION['loggedin'] === true){ echo "<a href = './model/logout_user.php'>Logout</a>";}; ?></li>
-					<li><a href = "#">Settings</a></li>
-					</ul>
-					<a class = "nav_icon" href = ""><span></span><span></span><span></span></a>
-				</nav>
-		</header>
+   		<?php require("header.php"); ?>
 		<?php
 			session_start();
 			if (!$_SESSION['loggedin'] || $_SESSION['loggedin'] == false)
 			{
 				echo "
-					<form action = ./model/login_user.php method = POST>
+					<form action = ./modal/login_user.php method = POST>
 						<table>
 							<div class = 'container style' =' background-color:#f1f1f1'>
 								<tr><td><img class = title src = 'img/randoms/13_profile-512.png'><label></label><input class = 'fill' type = text placeholder = 'Enter Username name' = username required></td></tr>

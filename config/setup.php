@@ -41,9 +41,9 @@
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "CREATE TABLE Gallery (
 			uid INT(11) NOT NULL,
+			postid INT(11) AUTO_INCREMENT PRIMARY KEY,
 			username VARCHAR(100) NOT NULL,
-			imgFullNameGallery LONGTEXT NOT NULL,
-			orderGallery LONGTEXT NOT NULL
+			imgFullNameGallery LONGTEXT NOT NULL
 			)";
 		echo "Gallery table created successfully<br>";
 		$connection->exec($sql);
