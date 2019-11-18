@@ -12,7 +12,9 @@ function like(id)
 
         }
         if (request.status === 400)
-            console.log(request.responseText);
+        {
+
+        }
     }
     request.open("POST", "/camagru/modal/like.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
