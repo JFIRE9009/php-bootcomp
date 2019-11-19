@@ -105,7 +105,7 @@ body
 {
 	font-family: fantasy;
 }
-form 
+/* form 
 {
 	justify-content: center;
 	display: inline-block;
@@ -115,7 +115,7 @@ form
 	border-radius: 15px;
 	width: 30vw;
 	height: 30vh;
-}
+} */
 .gal_form
 {
 	justify-content: center;
@@ -276,6 +276,7 @@ button:hover
 	background: center;
 	background-size: cover;
 	background-image: url(../img/stickers/kitten.png);
+	cursor: pointer;
 }
 .pokemon
 {
@@ -287,6 +288,7 @@ button:hover
 	background: center;
 	background-size: cover;
 	background-image: url(../img/stickers/pokemon.png);
+	cursor: pointer;
 }
 .whale
 {
@@ -298,6 +300,7 @@ button:hover
 	background: center;
 	background-size: cover;
 	background-image: url(../img/stickers/whale.png);
+	cursor: pointer;
 }
 .fox_deer
 {
@@ -309,4 +312,52 @@ button:hover
 	background: center;
 	background-size: cover;
 	background-image: url(../img/stickers/fox_deer.png);
+	cursor: pointer;
+}
+.com_img
+{
+	position: relative;
+	z-index: 1;
+	content:"0a0";
+	border-radius: 2vw;
+	border: .5vw solid rgb(249, 200, 230);
+	background: center;
+	background-size: cover;
+	margin: -10vw auto;
+	padding: 1vw;
+	width: 25vw;
+	height: 50vh;
+}
+.comments
+{
+	position: relative;
+	padding: 2.5vw;
+	margin: 0 auto;
+	height: 15vw;
+}
+input[type="text"]
+{
+	border-radius: 10px;
+	box-shadow: 5px 5px rgba(0, 0, 0, .25);
+	border: none;
+	font-size: 5vh;
+	font-family: cursive;
+	/* background: rgba(255, 255, 255, 0.5); */
+	width: 50%;
+	height: 5vw;
+	margin: 20vh;
+}
+.uploaded_comments
+{
+	border-radius: 15px;
+	margin: 20vh auto;
+	font-display: inherit;
+	text-align: center;
+	border: thick solid rgb(249, 200, 230);
+	
+	width: 25vw;
+}
+.comment_btn
+{
+
 }

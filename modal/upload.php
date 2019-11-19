@@ -10,9 +10,9 @@
     
     
 
-    // $uid = $_SESSION['uid'];
-    // $username = $_SESSION['username'];
+    $uid = $_SESSION['uid'];
+    $username = $_SESSION['username'];
     
-    // $stmt = $connection->prepare("INSERT INTO gallery(uid, username, imgFullNameGallery) VALUES(?, ?, ?)");
-    // $stmt->execute(array($uid, $username, $fileName));
+    $stmt = $connection->prepare("INSERT INTO gallery(uid, username, imgFullNameGallery) VALUES(?, ?, ?)");
+    $stmt->execute(array($uid, $username, $fileName));
 ?>

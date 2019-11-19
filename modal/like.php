@@ -3,7 +3,7 @@
     session_start();
     $uid = $_SESSION['uid'];
 
-    $postid = $_POST["postid"];
+    var_dump($postid = $_POST["postid"]);
     $stmt = $connection->prepare("INSERT INTO likes(`uid`, `pid`) VALUES (?, ?)");
     try
     {

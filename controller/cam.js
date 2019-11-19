@@ -1,11 +1,12 @@
 
 window.addEventListener("load", () =>
 {
-var video = document.getElementById("video");
-var canvas = document.createElement("canvas");
-var upload = document.getElementById("upload");
-var capture = document.getElementById("capture");
-var context = canvas.getContext("2d");
+	var video = document.getElementById("video");
+	var canvas = document.createElement("canvas");
+	var upload = document.getElementById("upload");
+	var capture = document.getElementById("capture");
+	var imageDisplay = document.getElementById("display");
+	var context = canvas.getContext("2d");
 
 	if (navigator.mediaDevices.getUserMedia)
 	{
@@ -16,7 +17,7 @@ var context = canvas.getContext("2d");
 		});
 	}
 
-	capture.addEventListener("click", () => 
+	capture.addEventListener("click",  () =>
 	{
 		canvas.height = video.offsetHeight;
 		canvas.width = video.offsetWidth;
@@ -57,11 +58,14 @@ var context = canvas.getContext("2d");
 			img.src = URL.createObjectURL(file);
 		}
 	});
-});
 
-function addSticker(id)
-{
-	
-	sticker = document.getElementById(id);
-	imageDisplay.drawImage(sticker);
-}
+	var stickers = document.querySelectorAll(".sticker");
+	for (var i = 0; i < stickers.length; i++)
+	{
+		stickers[i].addEventListener("click", (e) => {
+			console.log(e.target);
+			context.drawImage(e.target, 0, 0);
+			imageDisplay.src = canvas.toDataURL();
+		});
+	}
+});

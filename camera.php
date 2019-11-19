@@ -15,19 +15,19 @@
         if ($_SESSION['loggedin'] && $_SESSION['loggedin'] == true) 
         {
     ?>
-        <div id = "edit" style="position: relative;">
-            <img id = "display" width="100%"/>
-            <img id = "stickerdisplay" width="100%" style="position: absolute; top: 0; left: 0;"/>
+        <div id = "edit">
+            <img id = "display"/>
+            <img id = "stickerdisplay"/>
         </div>
         <video class = 'vid_img' autoplay = true id = video>Stream not available...</video>
         <input type = file id ="upload"/>
         <button id = "capture">Capture</button>
     <?php } ?>
     <div class = "stickers">
-        <div id = "kitten" class = "kitten" onclick = "addSticker('kitten')"></div>
-        <div id = "pokemon" class = "pokemon" onclick = "addSticker('pokemon')"></div>
-        <div id = "fox_deer" class = "fox_deer" onclick = "addSticker('fox_deer')"></div>
-        <div id = "whale" class = "whale" onclick = "addSticker('whale')"></div>
+        <img id = "kitten" class = "kitten sticker"></div>
+        <img id = "pokemon" class = "pokemon sticker"></div>
+        <img id = "fox_deer" class = "fox_deer sticker"></div>
+        <img id = "whale" src="" class = "whale sticker"></div>
     </div>
 </body>
 </html>

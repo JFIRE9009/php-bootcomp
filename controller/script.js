@@ -50,3 +50,17 @@ function delete_post(pid)
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("pid=" + pid);
 }
+
+function comment(pid)
+{
+    var comment = document.getElementById("comment");
+    var request = new XMLHttpRequest();
+    request.open("POST", "/camagru/modal/input_comment.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("pid=" + pid + "&comment=" + comment.value);
+}
+
+function redirect(pid)
+{
+    location.replace("comments.php?pid=" + pid);
+}

@@ -68,5 +68,21 @@
 	{
 		echo $sql . "<br>" . $e->getMessage();
 	}
+	try
+	{
+		$connection = new PDO("mysql:host=$my_server;dbname=$my_db", $my_user, $my_pswd);
+		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$sql = "CREATE TABLE Comments (
+			uid INT(11) NOT NULL,
+			pid INT(11) NOT NULL,
+			message TEXT NOT NULL
+			)";
+		echo "Comments table created successfully<br>";
+		$connection->exec($sql);
+	}
+	catch(PDOException $e)
+	{
+		echo $sql . "<br>" . $e->getMessage();
+	}
 	$connection = null;
 ?>
