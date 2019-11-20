@@ -6,7 +6,7 @@
 	{
 		$connection = new PDO("mysql:host=$my_server", $my_user, $my_pswd);
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "CREATE DATABASE $my_db";
+		$sql = "CREATE DATABASE IF NOT EXISTS $my_db";
 		$connection->exec($sql);
 		echo "Database created successfully<br>";
 	}
@@ -18,7 +18,7 @@
 	{
 		$connection = new PDO("mysql:host=$my_server;dbname=$my_db", $my_user, $my_pswd);
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "CREATE TABLE Users (
+		$sql = "CREATE TABLE IF NOT EXISTS Users (
 			id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 			firstname VARCHAR(100) NOT NULL,
 			lastname VARCHAR(100) NOT NULL,
@@ -39,9 +39,9 @@
 	{
 		$connection = new PDO("mysql:host=$my_server;dbname=$my_db", $my_user, $my_pswd);
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "CREATE TABLE Gallery (
-			uid INT(11) NOT NULL,
+		$sql = "CREATE TABLE IF NOT EXISTS  Gallery (
 			postid INT(11) AUTO_INCREMENT PRIMARY KEY,
+			uid INT(11) NOT NULL,
 			username VARCHAR(100) NOT NULL,
 			imgFullNameGallery LONGTEXT NOT NULL
 			)";
@@ -56,7 +56,7 @@
 	{
 		$connection = new PDO("mysql:host=$my_server;dbname=$my_db", $my_user, $my_pswd);
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "CREATE TABLE Likes (
+		$sql = "CREATE TABLE IF NOT EXISTS Likes (
 			uid INT(11) NOT NULL,
 			pid INT(11) NOT NULL,
 			UNIQUE KEY (`uid`, `pid`)
@@ -72,9 +72,11 @@
 	{
 		$connection = new PDO("mysql:host=$my_server;dbname=$my_db", $my_user, $my_pswd);
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$sql = "CREATE TABLE Comments (
+		$sql = "CREATE TABLE IF NOT EXISTS Comments (
+			cid INT(11) AUTO_INCREMENT PRIMARY KEY,
 			uid INT(11) NOT NULL,
 			pid INT(11) NOT NULL,
+			username VARCHAR(100) NOT NULL,
 			message TEXT NOT NULL
 			)";
 		echo "Comments table created successfully<br>";

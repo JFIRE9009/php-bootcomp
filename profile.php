@@ -1,48 +1,61 @@
-<?php session_start(); ?>
+<?php
+    require("header.php");
+    session_start();
+?>
 <!DOCTYPE html>
-	<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<link rel = "stylesheet" href = "css/login.css">
-		<title>Document</title>
-	</head>
-	<body>
-   		<?php require("header.php"); ?>
-		<?php
-			session_start();
-			if (!$_SESSION['loggedin'] || $_SESSION['loggedin'] == false)
-			{
-				echo "
-					<form action = ./modal/login_user.php method = POST>
-						<table>
-							<div class = 'container style' =' background-color:#f1f1f1'>
-								<tr><td><img class = title src = 'img/randoms/13_profile-512.png'><label></label><input class = 'fill' type = text placeholder = 'Enter Username name' = username required></td></tr>
-								<tr><td><img  class = title src = 'img/randoms/21_lock-512.png'><label></label><input class = 'fill' placeholder = 'Enter Password type' = password name = password required></td></tr>
-								<tr><td><button type = submit name = login_btn>Login</button></td></tr>
-								<tr><td><button type = button style.display = none class=cancelbtn>Cancel</button></td></tr>
-							</div>
-						</table>
-					</form>
-				";
-			}
-			elseif ($_SESSION['loggedin'] && $_SESSION['loggedin'] == true)
-			{
-				echo "
-					<h1>Snap an Image!</h1>
-					<div class = 'wc_header'></div>
-					<div class = 'wc_top_container'>
-						<video id = video>Not available...</video>
-						<button id = 'photo_button' class = 'btn_dark'>Take Photo</button>
-						<button id = 'clear_button'>Clear</button>
-						<canvas id = 'canvas'></canvas>
-					</div>
-					<div class = 'bottom_container'>
-						<div id = 'photos'></div>
-					</div>
-				";
-			}
-		?>
-	</body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel = "stylesheet" href = "css/login.css"/>
+    <title>Document</title>
+</head>
+<body>
+    <div class = "profile">
+        <div class = "top">
+            <div class = "profile_img"></div>
+            <p class = "profile_name"><?php echo $_SESSION['username']; ?></p>
+            <i class = "fa fa-cog profile_settings"></i>
+        </div>
+        <div class = "profile_gallery">
+            <?php
+                require("./config/connect.php");
+                $username = $_SESSION['username'];
+                $stmt = $connection->prepare("SELECT * FROM gallery WHERE username = ? ORDER BY postid DESC");
+                $stmt->execute(array($username));
+                while ($img = $stmt->fetch(PDO::FETCH_ASSOC))
+                {
+                    $pid = $img['postid'];
+                    $statement = $connection->prepare("SELECT * FROM likes WHERE pid = :pid");
+                    $statement->bindParam(":pid", $pid);
+                    $statement->execute();
+                    $like_count = $statement->rowCount();
+                    $statement = $connection->prepare("SELECT COUNT(*) FROM `likes` WHERE `uid`=? AND `pid`=?");
+                    $statement->execute(array($_SESSION["uid"], $pid));
+                    $isliked = $statement->fetch()[0];
+            ?>
+                    <div id="delete_post-<?php echo $pid; ?>">
+                        <a>
+                            <div class = 'gal_img' style = 'background-image: url(./img/uploads/<?php echo $img['imgFullNameGallery'] ?>)'></div>
+                            <h3>Posted by: <?php echo $img['username'] ?></h3>
+                        </a>
+                        <i class = 'fa fa-thumbs-o-<?php echo !$isliked ? "up" : "down";?> like_btn' id = "like-<?php echo $pid; ?>" onclick = "like(<?php echo $pid; ?>)"><a> Likes</a></i>
+
+                        <a id="like-count-<?php echo $pid; ?>"><?php echo $like_count; ?></a>
+                        <i onclick = "redirect(<?php echo $pid ?>)"><button>Comment</button></i>
+                        <?php
+                        if ($img['username'] === $_SESSION['username'])
+                        {
+                            ?>
+                        <i class = 'fa fa-trash delete_btn' use-id="<?php echo $pid; ?>"><a class = "delete_btn">  Delete your post?</a></i>
+                    </div>
+                <?php
+                    }
+                }
+                ?>
+        </div>
+    </div>
+</body>
 </html>

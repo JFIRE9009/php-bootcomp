@@ -23,25 +23,32 @@
         $img = $stmt->fetchColumn();
     ?>
         <div class = 'com_img' style = 'background-image: url(./img/uploads/<?php echo $img ?>)'></div>        
+        <div class = "break"></div>
         <?php
-        $stmt = $connection->prepare("SELECT * FROM `comments` WHERE pid = ?");
+        $stmt = $connection->prepare("SELECT * FROM `comments` WHERE pid = ? ORDER BY cid DEW∑SC");
         $stmt->execute(array($pid));
         while ($comments = $stmt->fetch(PDO::FETCH_ASSOC))
         {
     ?>
             <div class = "uploaded_comments">
-                <?php echo $comments['message'];?>
+                <?php echo $comments['username'] . ": " . $comments['message']; ?>
             </div>
     <?php
         }
     ?>
     
-
+    <?php
+        if ($_SESSION['loggedin'] && $_SESSION['loggedin'] === true)
+        {
+    ?>
     <div class = "comments">
         <input type = "hidden" value = <?php echo $pid; ?>/>
         <input id = "comment" class = "comment" type = "text" required/>
         <button class = "comment_btn" onclick = "comment(<?php echo $pid; ?>)" type = "button" value = "execute">Comment</button>
     </div>
+    <?php
+        }
+    ?>
 </div>
     
 </body>

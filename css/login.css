@@ -125,7 +125,7 @@ body
 	border: 3px solid rgb(249, 200, 230);
 	border-radius: 15px;
 	width: 30vw;
-	height: 30vh;
+	height: 28vw;
 }
 .vid_img
 {
@@ -150,7 +150,7 @@ body
 	margin: 0 auto;
 	padding: 1vw;
 	width: 25vw;
-	height: 50vh;
+	height: 20vw;
 }
 .reg_form
 {
@@ -317,8 +317,6 @@ button:hover
 .com_img
 {
 	position: relative;
-	z-index: 1;
-	content:"0a0";
 	border-radius: 2vw;
 	border: .5vw solid rgb(249, 200, 230);
 	background: center;
@@ -326,7 +324,12 @@ button:hover
 	margin: -10vw auto;
 	padding: 1vw;
 	width: 25vw;
-	height: 50vh;
+	height: 20vw;
+}
+.break
+{
+	width: 100%;
+	height: 10vw;
 }
 .comments
 {
@@ -335,7 +338,7 @@ button:hover
 	margin: 0 auto;
 	height: 15vw;
 }
-input[type="text"]
+.comments input[type="text"]
 {
 	border-radius: 10px;
 	box-shadow: 5px 5px rgba(0, 0, 0, .25);
@@ -349,15 +352,57 @@ input[type="text"]
 }
 .uploaded_comments
 {
+	font-family: cursive;
+	overflow-wrap: break-word;
 	border-radius: 15px;
-	margin: 20vh auto;
+	margin: 1vw auto;
 	font-display: inherit;
 	text-align: center;
-	border: thick solid rgb(249, 200, 230);
-	
+	border: thick solid rgb(249, 200, 230);;
 	width: 25vw;
 }
 .comment_btn
 {
 
+}
+.top
+{
+	display: inline;
+}
+.profile
+{
+	border-radius: 5px;
+	padding: 20px;
+	margin: -7.5vw auto;
+	border-top: thick solid rgb(249, 200, 230);
+	height: 80%;
+	width: 80%;
+	overflow-wrap: break-word;
+}
+.profile_img
+{
+	border-radius: 100px;
+	border: thick solid rgb(249, 200, 230);
+	width: 10vw;
+	height: 10vw;
+	background: center;
+	background-size: cover;
+	background-image: url("../img/profile_pictures/default.png");
+}
+.profile_name
+{
+	margin: -5.5vw auto;
+	font-size: 2.5vw;
+	font-family: fantasy;
+}
+.profile_gallery
+{
+	margin: 10vw auto;
+}
+.fa.fa-cog.profile_settings
+{
+	float: right;
+	top: 1vw;
+	font-size: 2.5vw;
+	cursor: pointer;
 }

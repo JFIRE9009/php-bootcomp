@@ -5,12 +5,13 @@
     $comment = $_POST["comment"];
     $pid = $_POST["pid"];
     $uid = $_SESSION['uid'];
+    $username = $_SESSION['username'];
 
-    $stmt = $connection->prepare("INSERT INTO comments(`uid`, `pid`, `message`) VALUES(?, ?, ?)");
+    $stmt = $connection->prepare("INSERT INTO comments(`uid`, `pid`, `username`, `message`) VALUES(?, ?, ?, ?)");
     try
     {
         http_response_code(200);
-        $stmt->execute(array($uid, $pid, $comment));
+        $stmt->execute(array($uid, $pid, $username, $comment));
     }
     catch (PDOException $e)
     {
