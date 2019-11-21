@@ -9,11 +9,12 @@ function like(id)
             var like_count = document.getElementById("like-count-" + id);
             like_count.innerHTML = 1 + Number(like_count.innerHTML);
             like_btn.className = "fa fa-thumbs-o-down";
+            console.log(request.responseText);
 
         }
-        if (request.status === 400)
+        else if (request.status === 400)
         {
-
+            console.log(request.responseText);
         }
     }
     request.open("POST", "/camagru/modal/like.php");
@@ -31,6 +32,19 @@ window.addEventListener("load", () => {
         });
     };
 });
+
+function comment(pid)
+{
+    var comment = document.getElementById("comment");
+    var request = new XMLHttpRequest();
+    request.open("POST", "/camagru/modal/input_comment.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("pid=" + pid + "&comment=" + comment.value);
+}
+function redirect(pid)
+{
+    location.replace("comments.php?pid=" + pid);
+}
 
 function delete_post(pid)
 {
@@ -50,17 +64,48 @@ function delete_post(pid)
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("pid=" + pid);
 }
-
-function comment(pid)
+window.addEventListener("load", () => 
 {
-    var comment = document.getElementById("comment");
-    var request = new XMLHttpRequest();
-    request.open("POST", "/camagru/modal/input_comment.php");
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send("pid=" + pid + "&comment=" + comment.value);
-}
-
-function redirect(pid)
-{
-    location.replace("comments.php?pid=" + pid);
-}
+    var on = document.getElementById("on");
+    var off = document.getElementById("off");
+    if (on)
+    {
+        on.addEventListener("click", () =>
+        {
+            var request = new XMLHttpRequest();
+            request.onload = () =>
+            {
+                if (request.status === 200)
+                {
+                    console.log("on");
+                    console.log(request.responseText);
+                }
+                else if(request.status === 500)
+                    console.log(request.responseText);
+            }
+            request.open("POST", "/camagru/modal/notifications.php");
+            request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            request.send("on=" + on);
+       });
+    }
+    if (off)
+    {
+        off.addEventListener("click", () =>
+        {
+            var request = new XMLHttpRequest();
+            request.onload = () =>
+            {
+                if (request.status === 200)
+                {
+                    console.log("off");
+                    console.log(request.responseText);
+                }
+                else if(request.status === 500)
+                    console.log(request.responseText);
+            }
+            request.open("POST", "/camagru/modal/notifications.php");
+            request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            request.send("off=" + off);
+        });
+    }
+});

@@ -7,8 +7,6 @@
     $image = imagecreatefromstring($img);
     $fileName = uniqid('', true).".png";
     imagepng($image, "../img/uploads/$fileName");
-    
-    
 
     $uid = $_SESSION['uid'];
     $username = $_SESSION['username'];

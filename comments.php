@@ -35,9 +35,7 @@
             </div>
     <?php
         }
-    ?>
-    
-    <?php
+        echo $_SESSION['loggedin'];
         if ($_SESSION['loggedin'] && $_SESSION['loggedin'] === true)
         {
     ?>

@@ -11,6 +11,9 @@
 	$password = htmlspecialchars($_POST['password']);
 	$hash = password_hash($_POST['password_1'], PASSWORD_BCRYPT);
 	$vkey = md5($_POST['username']);
+	$img .= "<img src='./../img/profile_pictures/default.png' alt = 'img'/>";
+	echo $img;
+	$img_str = base64_encode($img);
 
 	$message = "
 		Thanks for signing up!
@@ -25,7 +28,7 @@
 
 	try 
 	{
-		$sql = "INSERT INTO Users(firstname, lastname, username, email, password, vkey, verified) VALUES (:firstname, :lastname, :username, :email, :hash, :vkey, 0)";
+		$sql = "INSERT INTO Users(firstname, lastname, username, email, password, vkey, verified, notifications, dp) VALUES (:firstname, :lastname, :username, :email, :hash, :vkey, 0, 0, :dp)";
 		$statement = $connection->prepare($sql);
 		$statement->bindParam(':firstname', $firstname);
 		$statement->bindParam(':lastname', $lastname);
@@ -33,6 +36,7 @@
 		$statement->bindParam(':email', $email);
 		$statement->bindParam(':hash', $hash);
 		$statement->bindParam(':vkey', $vkey);
+		$statement->bindParam(':dp', $img_str);
 		$statement->execute();
 		if ($count = $statement->rowCount())
 		{

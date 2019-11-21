@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel = "stylesheet" href = "css/login.css"/>
+    <script src = "./controller/script.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -17,7 +18,17 @@
         <div class = "top">
             <div class = "profile_img"></div>
             <p class = "profile_name"><?php echo $_SESSION['username']; ?></p>
-            <i class = "fa fa-cog profile_settings"></i>
+            <i class = "fa fa-cog profile_settings">Notifications</i>
+            <div class = "notif_settings">
+                <label class = "notif_container">On
+                    <input id = "on" type = "radio" name = "radio">
+                    <span class = "checkmark"></span>
+                </label>
+                <label class = "notif_container">Off
+                    <input id = "off" type = "radio" name = "radio">
+                    <span class = "checkmark"></span>
+                </label>
+            </div>
         </div>
         <div class = "profile_gallery">
             <?php
@@ -41,7 +52,7 @@
                             <div class = 'gal_img' style = 'background-image: url(./img/uploads/<?php echo $img['imgFullNameGallery'] ?>)'></div>
                             <h3>Posted by: <?php echo $img['username'] ?></h3>
                         </a>
-                        <i class = 'fa fa-thumbs-o-<?php echo !$isliked ? "up" : "down";?> like_btn' id = "like-<?php echo $pid; ?>" onclick = "like(<?php echo $pid; ?>)"><a> Likes</a></i>
+                        <i class = 'fa fa-thumbs-o-up like_btn'><a> Likes</a></i>
 
                         <a id="like-count-<?php echo $pid; ?>"><?php echo $like_count; ?></a>
                         <i onclick = "redirect(<?php echo $pid ?>)"><button>Comment</button></i>

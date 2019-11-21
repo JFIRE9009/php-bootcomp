@@ -26,7 +26,9 @@
 			email VARCHAR(100) UNIQUE NOT NULL,
 			password VARCHAR(100) NOT NULL,
 			vkey VARCHAR(32) NOT NULL,
-			verified BOOLEAN NOT NULL
+			verified BOOLEAN NOT NULL,
+			notifications BOOLEAN NOT NULL,
+			dp LONGTEXT NOT NULL
 			)";
 		echo "User table created successfully<br>";
 		$connection->exec($sql);
