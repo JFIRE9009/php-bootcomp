@@ -1,18 +1,15 @@
 <?php
 	require('./../config/connect.php');
 
-	if ($_POST['password_1'] != $_POST['password_2'])
-		die("Passwords do not match");
-
 	$firstname = htmlspecialchars($_POST['firstname']);
 	$lastname = htmlspecialchars($_POST['lastname']);
 	$username = htmlspecialchars($_POST['username']);
 	$email = htmlspecialchars($_POST['email']);
 	$password = htmlspecialchars($_POST['password']);
+
 	$hash = password_hash($_POST['password_1'], PASSWORD_BCRYPT);
 	$vkey = md5($_POST['username']);
 	$img .= "<img src='./../img/profile_pictures/default.png' alt = 'img'/>";
-	echo $img;
 	$img_str = base64_encode($img);
 
 	$message = "
@@ -28,7 +25,7 @@
 
 	try 
 	{
-		$sql = "INSERT INTO Users(firstname, lastname, username, email, password, vkey, verified, notifications, dp) VALUES (:firstname, :lastname, :username, :email, :hash, :vkey, 0, 0, :dp)";
+		$sql = "INSERT INTO `users`(`firstname`, `lastname`, `username`, `email`, `password`, `vkey`, `verified`, `notifications`, `dp`) VALUES (:firstname, :lastname, :username, :email, :hash, :vkey, 0, 0, :dp)";
 		$statement = $connection->prepare($sql);
 		$statement->bindParam(':firstname', $firstname);
 		$statement->bindParam(':lastname', $lastname);
@@ -41,7 +38,7 @@
 		if ($count = $statement->rowCount())
 		{
 			session_start();
-			$query = $connection->prepare("SELECT id FROM users WHERE username = :username");
+			$query = $connection->prepare("SELECT `id` FROM `users` WHERE `username` = :username");
 			$query->bindParam(":username", $username);
 			$query->execute();
 			$_SESSION['id'] = $query->fetchColumn();
@@ -62,5 +59,5 @@
 	/* 
 	if ($sql)
 		header('Location: ../login.php'); */
-$connection = null;
+	$connection = null;
 ?>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel = "stylesheet" href = "css/login.css">
+    <link rel = "stylesheet" href = "css/main.css">
     <title>Document</title>
     <script src = "./controller/cam.js"></script>
 </head>
@@ -20,14 +20,18 @@
             <img id = "stickerdisplay"/>
         </div>
         <video class = 'vid_img' autoplay = true id = video>Stream not available...</video>
-        <input type = file id ="upload"/>
-        <button id = "capture">Capture</button>
+        <div class = "capture_bar">
+            <input type = file id ="file"/>
+            <button id = "capture">Capture</button>
+            <button id = "upload_btn">Upload</button>
+            <button id = "cancel_btn">Cancel</button>
+        </div>
     <?php } ?>
     <div class = "stickers">
-        <img id = "kitten" class = "kitten sticker"></div>
-        <img id = "pokemon" class = "pokemon sticker"></div>
-        <img id = "fox_deer" class = "fox_deer sticker"></div>
-        <img id = "whale" src="" class = "whale sticker"></div>
+        <div><img src = "./img/stickers/kitten.png" id = "kitten" class = "kitten sticker"></div>
+        <div><img src = "./img/stickers/pokemon.png" id = "pokemon" class = "pokemon sticker"></div>
+        <div><img src = "./img/stickers/fox_deer.png" id = "fox_deer" class = "fox_deer sticker"></div>
+        <div><img src = "./img/stickers/whale.png" id = "whale" src="" class = "whale sticker"></div>
     </div>
 </body>
 </html>

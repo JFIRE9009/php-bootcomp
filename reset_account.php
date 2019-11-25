@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>login</title>
-		<link rel = "stylesheet" href = "css/login.css">
+		<link rel = "stylesheet" href = "css/main.css">
 	</head>
 		<body>	
 			<h1>Enter email to change password</h1>

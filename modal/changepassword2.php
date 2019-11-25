@@ -8,7 +8,7 @@
 		$vkey = $_GET['vkey'];
 		$email = $_GET['email'];
 
-		$statement = $connection->prepare("UPDATE users SET password = :vpass WHERE email = :email and vkey = :vkey");
+		$statement = $connection->prepare("UPDATE `users` SET `password` = :vpass WHERE `email` = :email and `vkey` = :vkey");
 		$statement->bindParam(':vpass', $vpass);
 		$statement->bindParam(':email', $email);
 		$statement->bindParam(':vkey', $vkey);

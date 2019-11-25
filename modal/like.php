@@ -6,15 +6,17 @@
 
     $stmt = $connection->prepare("SELECT * FROM `gallery` WHERE postid = ?");
     $stmt->execute(array($postid));
-    $imgContents = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    echo $imgContents = $stmt->fetch(PDO::FETCH_ASSOC);
     $id = $imgContents['uid'];
     echo $imgName = $imgContents['imgFullNameGallery'];
     $imgName = str_replace("/\s/", ".", $imgName);
+    
     $stmt = $connection->prepare("SELECT * FROM `users` WHERE id = ?");
     $stmt->execute(array($id));
     
     $contents = $stmt->fetch(PDO::FETCH_ASSOC);
-	echo $img .= '<img src="./../img/upload/5dd6b3abca3268.52792261.png"/>';
+	$img .= '<img src="./../img/upload/5dd6b3abca3268.52792261.png"/>';
     $notif = $contents['notifications'];
     $email = $contents['email'];
     $message = "
@@ -29,7 +31,7 @@
         mail($email, Camagru, $message, 'From noreply@cascade.com');
     }
 
-    $stmt = $connection->prepare("INSERT INTO likes(`uid`, `id`) VALUES (?, ?)");
+    $stmt = $connection->prepare("INSERT INTO `likes`(`uid`, `pid`) VALUES (?, ?)");
     try
     {
         http_response_code(200);

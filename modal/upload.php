@@ -8,9 +8,9 @@
     $fileName = uniqid('', true).".png";
     imagepng($image, "../img/uploads/$fileName");
 
-    $uid = $_SESSION['uid'];
+    echo $uid = $_SESSION['uid'];
     $username = $_SESSION['username'];
     
-    $stmt = $connection->prepare("INSERT INTO gallery(uid, username, imgFullNameGallery) VALUES(?, ?, ?)");
+    $stmt = $connection->prepare("INSERT INTO `gallery`(`uid`, `username`, `imgFullNameGallery`) VALUES(?, ?, ?)");
     $stmt->execute(array($uid, $username, $fileName));
 ?>

@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<link rel = "stylesheet" href = "css/login.css">
+		<link rel = "stylesheet" href = "css/main.css">
 		<link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<title>Gallery</title>
 		<script src = './controller/script.js'></script>
@@ -17,12 +17,12 @@
 				<div class = "gallery_container">
 					<?php
 						require("./config/connect.php");
-						$stmt = $connection->prepare("SELECT * FROM gallery ORDER BY postid DESC");
+						$stmt = $connection->prepare("SELECT * FROM `gallery` ORDER BY `postid` DESC");
 						$stmt->execute();
 						while ($img = $stmt->fetch(PDO::FETCH_ASSOC))
 						{
 							$pid = $img['postid'];
-							$statement = $connection->prepare("SELECT * FROM likes WHERE pid = :pid");
+							$statement = $connection->prepare("SELECT * FROM `likes` WHERE `pid` = :pid");
 							$statement->bindParam(":pid", $pid);
 							$statement->execute();
 							$like_count = $statement->rowCount();

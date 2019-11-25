@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel = "stylesheet" href = "css/login.css"/>
+    <link rel = "stylesheet" href = "css/main.css"/>
     <title>Document</title>
     <script src = './controller/script.js'></script>
 </head>
@@ -18,14 +18,15 @@
     <?php
         $pid = $_GET['pid'];
         $_SESSION['pid'] = $pid;
-        $stmt = $connection->prepare("SELECT imgFullNameGallery FROM gallery WHERE postid = ?");
+        $stmt = $connection->prepare("SELECT `imgFullNameGallery` FROM `gallery` WHERE `postid` = ?");
         $stmt->execute(array($pid));
         $img = $stmt->fetchColumn();
     ?>
+        <div class = "upper_break"></div>
         <div class = 'com_img' style = 'background-image: url(./img/uploads/<?php echo $img ?>)'></div>        
-        <div class = "break"></div>
-        <?php
-        $stmt = $connection->prepare("SELECT * FROM `comments` WHERE pid = ? ORDER BY cid DEW∑SC");
+        <div class = "under_break"></div>
+    <?php
+        $stmt = $connection->prepare("SELECT * FROM `comments` WHERE `pid` = ? ORDER BY `cid` DESC");
         $stmt->execute(array($pid));
         while ($comments = $stmt->fetch(PDO::FETCH_ASSOC))
         {
@@ -35,8 +36,7 @@
             </div>
     <?php
         }
-        echo $_SESSION['loggedin'];
-        if ($_SESSION['loggedin'] && $_SESSION['loggedin'] === true)
+        if ($_SESSION['loggedin'] && $_SESSION['loggedin'] == true)
         {
     ?>
     <div class = "comments">

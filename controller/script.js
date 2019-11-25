@@ -37,9 +37,18 @@ function comment(pid)
 {
     var comment = document.getElementById("comment");
     var request = new XMLHttpRequest();
+    request.onload = () => {
+        if(request.status === 200)
+        {
+            document.location.reload();
+            console.log(request.responseText);
+        }
+        else
+            console.log(request.responseText);
+    };
     request.open("POST", "/camagru/modal/input_comment.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send("pid=" + pid + "&comment=" + comment.value);
+    request.send("postid=" + pid + "&comment=" + comment.value);
 }
 function redirect(pid)
 {

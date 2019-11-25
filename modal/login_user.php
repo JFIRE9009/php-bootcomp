@@ -8,14 +8,14 @@
 			$username = $_POST['username'];
 			$password = $_POST['password'];
 
-			$query = $connection->prepare("SELECT password FROM users WHERE username = ?");
+			$query = $connection->prepare("SELECT `password` FROM `users` WHERE `username` = ?");
 			$query->execute(array($username));
 			if (password_verify($password, $query->fetchColumn()))
 			{
 				$count = $query->rowCount();
 				if ($count > 0)
 				{
-					$stmt = $connection->prepare("SELECT id from users WHERE username = ?");
+					$stmt = $connection->prepare("SELECT `id` from `users` WHERE `username` = ?");
 					$stmt->execute(array($username));
 					$_SESSION["uid"] = $stmt->fetchColumn();
 					$_SESSION["loggedin"] = true;
