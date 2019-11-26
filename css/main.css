@@ -18,6 +18,11 @@ body
 	height: 45.15vh;
 	padding-top: 20px;
 }
+.welcome
+{
+	font-size: 2vw;
+	font-family: cursive;
+}
 .nav_links
 {
 	display: flex;
@@ -491,4 +496,19 @@ button:hover
 	height: 8px;
 	border-radius: 50%;
 	background: white;
+}
+.footer
+{
+	position: absolute;
+	z-index: 99;
+	background-color: rgba(255, 255, 255, .25);
+	height: 2vw;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	padding: 1vw;
+	text-align: left;
+	font-size: large;
+	color: black;
 }

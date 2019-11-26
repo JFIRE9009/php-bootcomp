@@ -1,5 +1,6 @@
 <?php
     require("header.php");
+    require("./config/connect.php");
     session_start();
 ?>
 <!DOCTYPE html>
@@ -33,7 +34,6 @@
         <div class = "profile_gallery">
             <?php
                 require("./config/connect.php");
-                $username = $_SESSION['username'];
                 $stmt = $connection->prepare("SELECT * FROM `gallery` WHERE `username` = ? ORDER BY `postid` DESC");
                 $stmt->execute(array($username));
                 while ($img = $stmt->fetch(PDO::FETCH_ASSOC))
@@ -56,10 +56,7 @@
 
                         <a id="like-count-<?php echo $pid; ?>"><?php echo $like_count; ?></a>
                         <i onclick = "redirect(<?php echo $pid ?>)"><button>Comment</button></i>
-                        <?php
-                        if ($img['username'] === $_SESSION['username'])
-                        {
-                            ?>
+
                         <i class = 'fa fa-trash delete_btn' use-id="<?php echo $pid; ?>"><a class = "delete_btn">  Delete your post?</a></i>
                     </div>
                 <?php

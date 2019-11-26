@@ -52,6 +52,6 @@
 				</div>
 			</div>
 		</section>
-		<div class = "footer"></div>
+		<div class = "footer">Cascade</div>
     </body>
 </html>

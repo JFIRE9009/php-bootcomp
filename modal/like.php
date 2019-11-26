@@ -7,9 +7,9 @@
     $stmt = $connection->prepare("SELECT * FROM `gallery` WHERE postid = ?");
     $stmt->execute(array($postid));
 
-    echo $imgContents = $stmt->fetch(PDO::FETCH_ASSOC);
+    $imgContents = $stmt->fetch(PDO::FETCH_ASSOC);
     $id = $imgContents['uid'];
-    echo $imgName = $imgContents['imgFullNameGallery'];
+    $imgName = $imgContents['imgFullNameGallery'];
     $imgName = str_replace("/\s/", ".", $imgName);
     
     $stmt = $connection->prepare("SELECT * FROM `users` WHERE id = ?");
@@ -39,7 +39,9 @@
     }
     catch (PDOException $e)
     {
-        http_response_code(400);
+        http_response_code(205);
         echo $e->getMessage();
+        $stmt = $connection->prepare("DELETE FROM `likes` WHERE `uid` = ? AND `pid` = ?");
+        $stmt->execute(array($uid, $postid));
     }
 ?>
