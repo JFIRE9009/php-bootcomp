@@ -14,7 +14,11 @@ function like(id)
         }
         else if (request.status === 400)
         {
-            console.log(request.responseText);
+            var like_btn = document.getElementById("like-" + id);
+            var like_count = document.getElementById("like-count-" + id);
+            like_count.innerHTML = Number(like_count.innerHTML) - 1;
+            like_btn.className = "fa fa-thumbs-o-up";
+            console.log(request.responseText);     
         }
     }
     request.open("POST", "/camagru/modal/like.php");
