@@ -16,7 +16,7 @@ body
 	overflow: hidden;
 	width: 100%;
 	height: 45.15vh;
-	padding-top: 20px;
+	padding-top: 5vw;
 }
 .welcome
 {
@@ -31,7 +31,7 @@ body
 	transform: all 0.3s;
 	background: white;
 	z-index: 9;
-	top: 0px;
+	top: 0;
 	width: 100%;
 }
 .nav_links ul
@@ -50,8 +50,8 @@ body
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-style: 1px solid black;
 	font-size: 2vw;
-	-webkit-text-stroke: 2px rgb(253, 179, 225);
-	text-shadow: 3px 3px rgb(255, 222, 242);
+	-webkit-text-stroke: .1vw rgb(253, 179, 225);
+	text-shadow: .15vw .15vw rgb(255, 222, 242);
 	color: rgb(249, 200, 230);
 	padding: 0.25rem 0;
 	margin: 0 1.80rem;
@@ -73,33 +73,33 @@ body
 .nav_icon
 {
 	position: absolute;
-	top: 27px;
-	right: 30px;
-	padding:  5px;
+	top: 2.5vw;
+	right: 3vw;
+	padding: .35vw;
 	z-index: 1;
 	cursor: pointer;
 }
 .nav_icon span
 {
 	 background: black;
-	 width: 30px;
-	 height: 1px;
+	 width: 3vw;
+	 height: .05vw;
 	 display: block;
 	 transition: 300ms linear all;
 }
 .nav_icon span:nth-child(1), span:nth-child(3)
 {
-	 width: 20px;
+	 width: 1.1vw;
 	 margin: 0 auto;
 }
 .nav_icon span:nth-child(2)
 {
-	width: 30px;
+	width: 1.5vw;
 	margin: 5px 0;
 }
 .nav_icon:hover span:nth-child(1), .nav_icon:hover span:nth-child(3)
 {
-	 width: 30px;
+	 width: 1.5vw;
 }
 .gallery_container
 {
@@ -132,6 +132,10 @@ form
 	width: 30vw;
 	height: 28vw;
 }
+.reg_form h2
+{
+	font-size: xx-large;
+}
 .gal_img
 {
 	position: relative;
@@ -148,12 +152,33 @@ form
 }
 .reg_form
 {
+	padding: 0.5vw;
+	text-align: center;
 	position: relative;
-	margin: -14vh auto;
-	border: 3px solid rgb(249, 200, 230);
-	border-radius: 15px;
+	margin: -7.5vw auto;
+	border: 0.25vw solid rgb(249, 200, 230);
+	border-radius: 1vw;
 	width: 30vw;
-	height: 45vh;
+	height: 35vw;
+}
+.container
+{
+	background: black;
+}
+.reg_form input
+{
+	border: 0.1vw solid rgb(249, 200, 230);
+	width: 260%;
+	font-size: 1vw;
+}
+.reg_form .reg_btn
+{
+	margin: 0 100%;
+}
+.reg_form .reg_submit_btn
+{
+	color: rgb(249, 200, 230);
+	text-decoration: none;
 }
 td
 {
@@ -163,6 +188,7 @@ td
 .reg_submit
 {
 	position: absolute;
+	border-top: 0.25vw solid rgb(249, 200, 230);
 	margin-left: auto;
 	bottom: 0;
 }
@@ -195,8 +221,8 @@ button
 	font-size: 0.75vw;
 	background-color: white;
 	color: rgb(249, 200, 230);
-	padding: 14px 20px;	
-	border: 3px solid rgb(249, 200, 230);
+	padding: .9vw 1.2vw;	
+	border: .15vw solid rgb(249, 200, 230);
 	border-radius: 3px;
 	cursor: pointer;
 	width: 6.5vw;
@@ -204,36 +230,6 @@ button
 button:hover
 {
 	background-color: rgba(252, 213, 237, .2);
-}
-.gal_input
-{
-	display: inline-block;
-	margin: 10%;
-	outline: none;
-	font-size: 0.75vw;
-	background-color: white;
-	color: rgb(249, 200, 230);
-	padding: 14px 20px;	
-	border: 3px solid rgb(249, 200, 230);
-	border-radius: 3px;
-	cursor: pointer;
-	width: 6.5vw;
-}
-.Remember
-{
-	margin: 10px -33%;
-}
-.Remember2
-{
-	margin: 10px 37%;
-}
-.cancelbtn 
-{
-	outline: none;
-	margin: auto 160%;
-	width: 100px;
-	padding: 10px 0px;
-	background-color: white;
 }
 #edit
 {
@@ -511,4 +507,5 @@ button:hover
 	text-align: left;
 	font-size: large;
 	color: black;
+	pointer-events: none;
 }

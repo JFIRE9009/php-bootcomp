@@ -1,5 +1,4 @@
 <?php
-    session_start();
     require("../config/connect.php");
 
     $comment = $_POST["comment"];

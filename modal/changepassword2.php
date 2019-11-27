@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	require('../config/connect.php');
 
 	if ($_SESSION["loggedin"] = true)

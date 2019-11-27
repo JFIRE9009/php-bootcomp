@@ -1,3 +1,4 @@
+<?php require("header.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -8,25 +9,23 @@
 		<title>Register</title>
 	</head>
 	<body>
-    	<?php require("header.php"); ?>
 		<form class = "reg_form" action = "./modal/input_user.php" method = "POST">
 			<table>
-				<div class="container">
-					<tr><td><label>Name</label><input type = "text" name = "firstname" required></td></tr>
-					<tr><td><label>Surname</label><input type = "text" name = "lastname" required></td></tr>
-					<tr><td><label>Username</label><input type = "text" name = "username" required></td></tr>
-					<tr><td><label>E-mail</label><input type = "email" name = "email" required></td></tr>
-					<tr><td><label>Password</label><input type = "password" name = "password_1" required></td></tr>
-					<tr><td><label>Confirm password</label><input type="password" name = "password_2" required></td></tr>
-					<tr><td><button type="submit" name="register_btn">Register</button></td></tr>
-					<div class = "reg_submit">
-						<label>Already have an account?</label>
-						<button type="button"><a href="login.php">Login</a></button>
-						<button type="button"><a href="./reset_account.php">Forgotten password?</a></button>
-					</div>
-					</tr>
+				<h2>Sign-Up</h2>
+				<tr><td><br><input placeholder = "Enter Name Here" type = "text" name = "firstname" required></td></tr>
+				<tr><td><br><input placeholder = "Enter Surname Here" type = "text" name = "lastname" required></td></tr>
+				<tr><td><br><input placeholder = "Enter Username Here" type = "text" name = "username" required></td></tr>
+				<tr><td><br><input placeholder = "Enter E-Mail Here" type = "email" name = "email" required></td></tr>
+				<tr><td><br><input placeholder = "Enter Password Here" pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})" title = "Must contain at least eight characters and one number, one uppercase letter, one lowercase letter, and one special character" type = "password" id = "pass_1" name = "password_1" required></td></tr>
+				<tr><td><br><input placeholder = "Confirm Password" pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})" type = "password" id = "pass_2" name = "password_2" required></td></tr>
+				<tr><td><br><button  class = "reg_btn" type = "submit" name = "register_btn">Register</button></td></tr>
+				<div class = "reg_submit">
+					<label>Already have an account?</label>
+					<button type = "button"><a class = "reg_submit_btn" href = "login.php">Login</a></button>
+					<button type = "button"><a class = "reg_submit_btn" href = "./reset_account.php">Forgotten password?</a></button>
 				</div>
 			</table>
 		</form>
+		<div class = "footer">Cascade</div>
 	</body>
 </html>

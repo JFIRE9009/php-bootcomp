@@ -14,7 +14,6 @@
 	<body>
    		<?php require("header.php"); ?>
 		<?php
-			session_start();
 			if ($_SESSION["username"]) 
 				echo "<a class = 'welcome'>Welcome $_SESSION[username]!</a> ";
 		?>
@@ -40,5 +39,6 @@
 		</div>
 		<script src = "php/edits.js"></script>
 		<script src = "https://code.jquery.com/jquery-3.4.1.js"></script>
+		<div class = "footer">Cascade</div>
 	</body>
 </html>

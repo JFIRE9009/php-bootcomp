@@ -1,7 +1,6 @@
 <?php
     require("header.php");
     require("./config/connect.php");
-    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +17,17 @@
     <div class = "profile">
         <div class = "top">
             <div class = "profile_img"></div>
-            <p class = "profile_name"><?php echo $_SESSION['username']; ?></p>
+            <p class = "profile_name"><?php echo $username = $_SESSION['username']; ?></p>
             <i class = "fa fa-cog profile_settings">Notifications</i>
             <div class = "notif_settings">
+                <?php
+                    $stmt = $connection->prepare("SELECT notifications FROM users WHERE username = ?");
+                    $stmt->execute(array($username));
+                    if ($stmt->fetchColumn() == "1")
+                        $notif = 1;
+                    else if ($stmt->fetchColumn() == "0")
+                        $notif = 0;
+                ?>
                 <label class = "notif_container">On
                     <input id = "on" type = "radio" name = "radio">
                     <span class = "checkmark"></span>
@@ -31,39 +38,8 @@
                 </label>
             </div>
         </div>
-        <div class = "profile_gallery">
-            <?php
-                require("./config/connect.php");
-                $stmt = $connection->prepare("SELECT * FROM `gallery` WHERE `username` = ? ORDER BY `postid` DESC");
-                $stmt->execute(array($username));
-                while ($img = $stmt->fetch(PDO::FETCH_ASSOC))
-                {
-                    $pid = $img['postid'];
-                    $statement = $connection->prepare("SELECT * FROM `likes` WHERE `pid` = :pid");
-                    $statement->bindParam(":pid", $pid);
-                    $statement->execute();
-                    $like_count = $statement->rowCount();
-                    $statement = $connection->prepare("SELECT COUNT(*) FROM `likes` WHERE `uid`=? AND `pid`=?");
-                    $statement->execute(array($_SESSION["uid"], $pid));
-                    $isliked = $statement->fetch()[0];
-            ?>
-                    <div id="delete_post-<?php echo $pid; ?>">
-                        <a>
-                            <div class = 'gal_img' style = 'background-image: url(./img/uploads/<?php echo $img['imgFullNameGallery'] ?>)'></div>
-                            <h3>Posted by: <?php echo $img['username'] ?></h3>
-                        </a>
-                        <i class = 'fa fa-thumbs-o-up like_btn'><a> Likes</a></i>
-
-                        <a id="like-count-<?php echo $pid; ?>"><?php echo $like_count; ?></a>
-                        <i onclick = "redirect(<?php echo $pid ?>)"><button>Comment</button></i>
-
-                        <i class = 'fa fa-trash delete_btn' use-id="<?php echo $pid; ?>"><a class = "delete_btn">  Delete your post?</a></i>
-                    </div>
-                <?php
-                    }
-                }
-                ?>
-        </div>
+        <div class = "profile_gallery" id = "profile_photos"></div>
     </div>
+    <div class = "footer">Cascade</div>
 </body>
 </html>

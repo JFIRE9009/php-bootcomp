@@ -1,6 +1,5 @@
 <?php
     require("../config/connect.php");
-    session_start();
 
     $pid = $_POST['pid'];
     $stmt = $connection->prepare("SELECT `username` FROM `gallery` WHERE `postid` = ?");

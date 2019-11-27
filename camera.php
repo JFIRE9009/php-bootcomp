@@ -33,5 +33,6 @@
         <div><img src = "./img/stickers/fox_deer.png" id = "fox_deer" class = "fox_deer sticker"></div>
         <div><img src = "./img/stickers/whale.png" id = "whale" src="" class = "whale sticker"></div>
     </div>
+    <div class = "footer">Cascade</div>
 </body>
 </html>

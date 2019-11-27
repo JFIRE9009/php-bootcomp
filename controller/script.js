@@ -1,4 +1,4 @@
-function like(id)
+function like (id)
 {
     var request = new XMLHttpRequest();
     request.onload = () =>
@@ -26,16 +26,68 @@ function like(id)
     request.send("postid=" + id);
 }
 
+var pageno = 1;
+var propageno = 1;
+
+function loadmore ()
+{
+    var profilephotoplace = document.getElementById("profile_photos");
+    var galleryphotoplace = document.getElementById("photo_place");
+    if (galleryphotoplace)
+    {
+        var request = new XMLHttpRequest();
+        request.onload = () => {
+            if(request.status === 200)
+            {
+                pageno++;
+                galleryphotoplace.innerHTML += request.responseText;
+            }
+            else
+                console.log(request.responseText);
+        };
+        request.open("POST", "/camagru/modal/get_gallery_posts.php?page=" + pageno);
+        request.send();
+    }
+    else if (profilephotoplace)
+    {
+        var request = new XMLHttpRequest();
+        request.onload = () => {
+            if(request.status === 200)
+            {
+                propageno++;
+                profilephotoplace.innerHTML += request.responseText;
+            }
+            else
+            console.log(request.responseText);
+        };
+        request.open("POST", "/camagru/modal/get_profile_posts.php?page=" + propageno);
+        request.send();
+    }
+}
+
 window.addEventListener("load", () => {
-    var deletebtns = document.querySelectorAll("i.delete_btn");
-    for (var i = 0; i < deletebtns.length; i++)
-    {   
-        var element = deletebtns[i];
-        element.addEventListener("click", (e) => {
-            delete_post(e.target.getAttribute("use-id"));
-        });
-    };
+    loadmore();
 });
+function infiniteScroll ()
+{
+    var pro_wrap = document.getElementById('profile_photos');
+    var gal_wrap = document.getElementById('photo_place');
+    if (pro_wrap)
+    {
+        var contentHeight = pro_wrap.offsetHeight;
+        var y = window.pageYOffset + window.innerHeight;
+        if (y >= contentHeight)
+            loadmore();
+    }
+    if (gal_wrap)
+    {
+        var contentHeight = gal_wrap.offsetHeight;
+        var y = window.pageYOffset + window.innerHeight;
+        if (y >= contentHeight)
+            loadmore();
+    }
+}
+window.onscroll = infiniteScroll;
 
 function comment(pid)
 {
@@ -61,21 +113,25 @@ function redirect(pid)
 
 function delete_post(pid)
 {
+    var confirmation = confirm("Delete post?");
     var request = new XMLHttpRequest();
-    request.onload = () =>
+    if (confirmation == true)
     {
-        if (request.status === 200)
+        request.onload = () =>
         {
-            console.log("deleting: " + pid);
-            var post = document.getElementById("delete_post-" + pid);
-            post.style.display = "none";
-        }
-        else if (request.status === 400)
+            if (request.status === 200)
+            {
+                console.log("deleting: " + pid);
+                var post = document.getElementById("delete_post-" + pid);
+                post.style.display = "none";
+            }
+            else if (request.status === 400)
             console.log(request.responseText);
+        }
+        request.open("POST", "/camagru/modal/delete_post.php");
+        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        request.send("pid=" + pid);
     }
-    request.open("POST", "/camagru/modal/delete_post.php");
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send("pid=" + pid);
 }
 window.addEventListener("load", () => 
 {

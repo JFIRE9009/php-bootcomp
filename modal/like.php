@@ -1,6 +1,5 @@
 <?php
     require("../config/connect.php");
-    session_start();
     $uid = $_SESSION['uid'];
     $postid = $_POST["postid"];
 

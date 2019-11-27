@@ -11,7 +11,6 @@
 	<body>
    		<?php require("header.php"); ?>
 		<?php
-			session_start();
 			if (!$_SESSION['loggedin'] || $_SESSION['loggedin'] == false)
 			{
 				echo "

@@ -99,6 +99,7 @@ window.addEventListener("load", () =>
 			if (request.status == 200)
 			{
 				console.log(request.responseText);
+				alert("Image Uploaded");
 				document.location.reload();
 			}
 			else if (request.status == 400)
@@ -108,14 +109,4 @@ window.addEventListener("load", () =>
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		request.send("canvas=" + encodeURIComponent(canvas.toDataURL().replace("data:image/png;base64,", "")));
 	});
-	// var stickers = document.querySelectorAll(".sticker");
-	// for (var i = 0; i < stickers.length; i++)
-	// {
-	// 	stickers[i].addEventListener("click", (e) => 
-	// 	{
-	// 		console.log(e.target);
-	// 		context.drawImage(e.target, 0, 0, 100, 100);
-	// 		imageDisplay.src = canvas.toDataURL();
-	// 	});
-	// }
 });

@@ -19,5 +19,6 @@
 					</div>
 				</table>
 			</form>
+		<div class = "footer">Cascade</div>
 		</body>
 	</html>

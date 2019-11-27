@@ -1,7 +1,6 @@
 <?php 
     require("./config/connect.php");
     require("header.php"); 
-    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,6 +47,6 @@
         }
     ?>
 </div>
-    
+<div class = "footer">Cascade</div>
 </body>
 </html>
