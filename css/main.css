@@ -134,7 +134,7 @@ form
 }
 .reg_form h2
 {
-	font-size: xx-large;
+	font-size: 1vw;
 }
 .gal_img
 {
@@ -149,6 +149,10 @@ form
 	padding: 1vw;
 	width: 25vw;
 	height: 20vw;
+}
+.fa.fa-thumbs-o-up.like_btn
+{
+	cursor: pointer;
 }
 .reg_form
 {
@@ -508,4 +512,9 @@ button:hover
 	font-size: large;
 	color: black;
 	pointer-events: none;
+}
+.login_msg
+{
+	font-size: 3.5vw;
+	font-family: fantasy;
 }

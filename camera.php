@@ -26,13 +26,18 @@
             <button id = "upload_btn">Upload</button>
             <button id = "cancel_btn">Cancel</button>
         </div>
-    <?php } ?>
     <div class = "stickers">
         <div><img src = "./img/stickers/kitten.png" id = "kitten" class = "kitten sticker"></div>
         <div><img src = "./img/stickers/pokemon.png" id = "pokemon" class = "pokemon sticker"></div>
         <div><img src = "./img/stickers/fox_deer.png" id = "fox_deer" class = "fox_deer sticker"></div>
         <div><img src = "./img/stickers/whale.png" id = "whale" src="" class = "whale sticker"></div>
     </div>
+    <?php }
+    else
+    {
+        echo "<a class = login_msg>Please login to view this page";
+    }
+     ?>
     <div class = "footer">Cascade</div>
 </body>
 </html>

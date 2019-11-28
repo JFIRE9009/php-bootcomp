@@ -71,8 +71,5 @@
 		else
 			echo $sql . "<br>" . $e->getMessage();
 	}
-	/* 
-	if ($sql)
-		header('Location: ../login.php'); */
 	$connection = null;
 ?>

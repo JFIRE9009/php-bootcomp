@@ -7,6 +7,6 @@
 		echo "You have successfully logged out";
 	}
 	else
-		echo "You are not logged in";/* 
-	header("location: ../login.php"); */
+		echo "You are not logged in";
+	header("location: ../login.php");
 ?>

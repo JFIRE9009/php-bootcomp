@@ -1,7 +1,7 @@
 <?php
     require("../config/connect.php");
 
-    $comment = $_POST["comment"];
+    $comment = htmlentities($_POST["comment"]);
     $pid = $_POST["postid"];
     $uid = $_SESSION['uid'];
     $username = $_SESSION['username'];
@@ -27,9 +27,6 @@
 
         Comment:
         $comment
-        
-        Post:
-        $img
     ";
     if ($notif === "1")
     {

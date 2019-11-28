@@ -14,6 +14,10 @@
     <title>Document</title>
 </head>
 <body>
+    <?php 
+        if ($_SESSION['loggedin'] && $_SESSION['loggedin'] == true) 
+        {
+    ?>
     <div class = "profile">
         <div class = "top">
             <div class = "profile_img"></div>
@@ -40,6 +44,12 @@
         </div>
         <div class = "profile_gallery" id = "profile_photos"></div>
     </div>
+    <?php }
+    else
+    {
+        echo "<a class = login_msg>Please login to view this page";
+    }
+     ?>
     <div class = "footer">Cascade</div>
 </body>
 </html>

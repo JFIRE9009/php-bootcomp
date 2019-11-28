@@ -99,8 +99,7 @@ window.addEventListener("load", () =>
 			if (request.status == 200)
 			{
 				console.log(request.responseText);
-				alert("Image Uploaded");
-				document.location.reload();
+				location.replace("/camagru/gallery.php");
 			}
 			else if (request.status == 400)
 				console.log(request.responseText);

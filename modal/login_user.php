@@ -34,7 +34,7 @@
 				}
 			}
 			else
-				echo "Wrong Data";
+				echo "Username/Password combination is not correct";
 		}
 		else
 			echo "You are already logged in";
