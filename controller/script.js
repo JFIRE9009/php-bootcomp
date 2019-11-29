@@ -65,10 +65,15 @@ function loadmore ()
     }
 }
 
+move_loc = () =>
+{
+    location.replace("index.php");
+}
+
 window.addEventListener("load", () => {
     loadmore();
 });
-function infiniteScroll ()
+infiniteScroll = () =>
 {
     var pro_wrap = document.getElementById('profile_photos');
     var gal_wrap = document.getElementById('photo_place');
@@ -178,3 +183,11 @@ window.addEventListener("load", () =>
         });
     }
 });
+
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+  
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }

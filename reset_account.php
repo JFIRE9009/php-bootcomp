@@ -1,4 +1,4 @@
-
+<?php require("header.php"); ?>
 <!DOCTYPE html>
 	<html lang="en">
 	<head>
@@ -7,29 +7,14 @@
 		<link rel = "stylesheet" href = "css/main.css">
 	</head>
 		<body>	
-			<h1>Enter email to change password</h1>
-			<header class = "header">
-				<nav class = "nav_links">
-					<ul>
-						<li><a href = "index.php">Home</a></li>
-						<li><a href = "">Gallery</a></li>
-						<li><a href = "profile.php">Profile</a></li>
-						<li class = "Logo"><a href = "index.php"><img src = "img/randoms/Birdy.png" alt = " " class = "White"><img class = "Black" src = "img/Birdy.png" alt = ""></a></li>
-						<li><a href = "login.php">Login</a></li>
-						<li><a href = "register.php">Register</a></li>
-						<li><a href = "./modal/logout_user.php">Logout</a></li>
-					</ul>
-					<a class = "nav_icon" href = ""><span></span><span></span><span></span></a>
-				</nav>
-			</header>
 			<br>
-			<form action = "./modal/changepassword.php" method = "POST">
+			<form class = "reset_form" action = "./modal/changepassword.php" method = "POST">
 				<table>
+					<h3>Enter email to change password</h3>
 					<div class = "container" style = "background-color:#f1f1f1">
-						<tr><td><img class ="title" src = "img/13_profile-512.png"><label></label><input class = "fill" type = "email" placeholder = "Enter Email" name = "email" required></td></tr>
-						<tr><td><img  class = "title" src = "img/21_lock-512.png"><label></label><input class = "fill" placeholder = "Enter New Password" type = "password" name = "password" required></td></tr>
-						<tr><td><button type = "submit" name = "format_btn">Format</button></td></tr>
-						<tr><td><button type = "button" style.display = "none" class="cancelbtn">Cancel</button></td></tr>
+						<tr><td><img class ="title" src = "img/randoms/13_profile-512.png"><input class = "fill" type = "email" placeholder = "Enter Email" name = "email" required></td></tr>
+						<tr><td><img  class = "title" src = "img/randoms/21_lock-512.png"><input class = "fill" placeholder = "Enter New Password" type = "password" name = "password" required></td></tr>
+						<tr><td><button type = "submit" name = "format_btn"class = "format_btn">Format</button></td></tr>
 					</div>
 				</table>
 			</form>

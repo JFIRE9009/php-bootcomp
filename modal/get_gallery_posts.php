@@ -22,27 +22,15 @@
                     <div class = 'gal_img' style = 'background-image: url(./img/uploads/<?php echo $img['imgFullNameGallery'] ?>)'></div>
                     <h3>Posted by: <?php echo $img['username'] ?></h3>
                 </a>
-                <?php
-                if ($_SESSION['loggedin'] && $_SESSION['loggedin'] === true)
-                {
-                ?>
+                <?php if ($_SESSION['loggedin'] && $_SESSION['loggedin'] === true) { ?>
                     <i class = 'fa fa-thumbs-o-<?php echo !$isliked ? "up" : "down";?> like_btn' id = "like-<?php echo $pid; ?>" onclick = "like(<?php echo $pid; ?>)"><a> Like!</a></i>
-                <?php
-                }
-                else if (!$_SESSION['loggedin'] || $_SESSION['loggedin'] === false)
-                {
-                ?>
+                <?php } else if (!$_SESSION['loggedin'] || $_SESSION['loggedin'] === false) { ?>
                     <i class = 'fa fa-thumbs-o-up like_btn'><a> Likes:</a></i>
-                    <?php
-                }
-                ?>
+                <?php } ?>
 
                 <a id="like-count-<?php echo $pid; ?>"><?php echo $like_count; ?></a>
                 <i onclick = "redirect(<?php echo $pid ?>)"><button>Comment</button></i>
-                <?php
-                if ($img['username'] === $_SESSION['username'])
-                {
-                ?>
+                <?php if ($img['username'] === $_SESSION['username']) { ?>
                 <i class = 'fa fa-trash delete_btn' onclick = "delete_post(<?php echo $pid; ?>)"><a class = "delete_btn">  Delete your post?</a></i>
             </div>
             <?php

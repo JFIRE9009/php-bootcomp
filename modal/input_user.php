@@ -67,7 +67,7 @@
 	catch (PDOException $e) 
 	{
 		if ($e->getCode() == 23000)
-			echo "Duplicate info";
+			echo "Username or email already in use";
 		else
 			echo $sql . "<br>" . $e->getMessage();
 	}

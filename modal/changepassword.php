@@ -1,23 +1,28 @@
 <?php
-	session_start();
-	if (isset($_SESSION["loggedin"]))
+	require("../config/connect.php");
+
+	$hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
+	$email = $_POST['email'];
+	try
 	{
-		$hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
-		$email = $_POST['email'];
-		$vkey = $_SESSION['vpass'];
-			$message = "
-			Change password by clicking link.
-			------------------------
-			Username: '.$_POST[username].'
-			E-Mail: '.$email.'
-			------------------------
-			
-			Please click this link to change your password:
-			http://localhost:8080/camagru/modal/changepassword2.php?email=$email&vkey=$vkey&hash=$hash
-		";
-		mail($_POST['email'], Confirmation, $message, 'From noreply@cascade.com');
-		echo "<label class = pop>An E-Mail has been sent for confirmation</label>";
+		$stmt = $connection->prepare("SELECT `vkey` FROM `users` WHERE `email` = ?");
+		$stmt->execute(array($email));
 	}
-	else
-		echo "You are not logged in";
+	catch (PDOException $e)
+	{
+		echo $e->getMessage();
+	}
+	$vkey = $stmt->fetchColumn();
+
+	$message = "
+	Change password by clicking link.
+	------------------------
+	E-Mail: ".$email."
+	------------------------
+	
+	Please click this link to change your password:
+	'http://localhost:8080/camagru/modal/changepassword2.php?vkey=".$vkey."&hash=".$hash."
+	";
+	mail($email, Confirmation, $message, 'From noreply@cascade.com');
+	echo "<label class = pop>An E-Mail has been sent for confirmation</label>";
 ?>

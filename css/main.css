@@ -6,16 +6,12 @@ body
 	background-size: cover;
 	text-align: center;
 }
-.pop
-{
-	color: rebeccapurple;
-}
 .header
 {
 	position: relative;
 	overflow: hidden;
 	width: 100%;
-	height: 45.15vh;
+	height: 15.15vw;
 	padding-top: 5vw;
 }
 .welcome
@@ -53,8 +49,8 @@ body
 	-webkit-text-stroke: .1vw rgb(253, 179, 225);
 	text-shadow: .15vw .15vw rgb(255, 222, 242);
 	color: rgb(249, 200, 230);
-	padding: 0.25rem 0;
-	margin: 0 1.80rem;
+	padding: 0.5vw;
+	margin: 0 2.5vw;
 	text-transform: uppercase;
 }
 .nav_links ul li a:hover
@@ -62,44 +58,13 @@ body
 	font-size: 2.45vw;
 	text-shadow: .25rem .25rem rgb(255, 214, 238);
 }
-.nav_links ul li.Logo .Black
+.logo_div
 {
-	display: none;
-}
-.nav_links ul li.Logo a
-{
-	margin: 0 4vw;
-}
-.nav_icon
-{
-	position: absolute;
-	top: 2.5vw;
-	right: 3vw;
-	padding: .35vw;
-	z-index: 1;
 	cursor: pointer;
-}
-.nav_icon span
-{
-	 background: black;
-	 width: 3vw;
-	 height: .05vw;
-	 display: block;
-	 transition: 300ms linear all;
-}
-.nav_icon span:nth-child(1), span:nth-child(3)
-{
-	 width: 1.1vw;
-	 margin: 0 auto;
-}
-.nav_icon span:nth-child(2)
-{
-	width: 1.5vw;
-	margin: 5px 0;
-}
-.nav_icon:hover span:nth-child(1), .nav_icon:hover span:nth-child(3)
-{
-	 width: 1.5vw;
+	background: center;
+	background-size: cover ;
+	width: 13.5vw;
+	height: 13.5vw;
 }
 .gallery_container
 {
@@ -110,30 +75,63 @@ body
 {
 	font-family: fantasy;
 }
-form 
+.login_form 
 {
-	justify-content: center;
-	display: inline-block;
 	position: relative;
-	margin: -8vh auto;
-	border: 3px solid rgb(249, 200, 230);
-	border-radius: 15px;
+	margin: -2.5vw auto;
+	text-align: center;
+	border: 0.25vw solid rgb(249, 200, 230);
+	padding: 0.5vw;
+	border-radius: 1vw;
 	width: 30vw;
-	height: 30vh;
+	height: 15vw;
 }
-.gal_form
+.login_form input
 {
-	justify-content: center;
-	display: inline-block;
+	padding: none;
+	border: 0.1vw solid rgb(249, 200, 230);
+	width: 25vw;
+	height: 2vw;
+	font-size: 1vw;
+}
+.reset_form 
+{
 	position: relative;
-	margin: 10vh auto;
-	border: 3px solid rgb(249, 200, 230);
-	border-radius: 15px;
+	margin: -2.5vw auto;
+	text-align: center;
+	border: 0.25vw solid rgb(249, 200, 230);
+	padding: 0.5vw;
+	border-radius: 1vw;
 	width: 30vw;
-	height: 28vw;
+	height: 15vw;
 }
-.reg_form h2
+.reset_form .title
 {
+	width: 2vw;
+	height: 2vw;
+}
+.reset_form input
+{
+	padding: none;
+	border: 0.1vw solid rgb(249, 200, 230);
+	width: 25vw;
+	height: 2vw;
+	font-size: 1vw;
+}
+.reset_form .format_btn
+{
+	margin: 0 12vw;
+}
+.br
+{ 
+	display: block; 
+	margin-bottom: 0em; 
+}
+.reset_form input
+{
+	padding: none;
+	border: 0.1vw solid rgb(249, 200, 230);
+	width: 25vw;
 	font-size: 1vw;
 }
 .gal_img
@@ -154,40 +152,67 @@ form
 {
 	cursor: pointer;
 }
+.edit_form
+{
+	padding: 0.5vw;
+	text-align: center;
+	position: relative;
+	margin: -2.5vw auto;
+	border: 0.25vw solid rgb(249, 200, 230);
+	border-radius: 1vw;
+	width: 30vw;
+	height: 20vw;
+}
+.edit_form input
+{
+	padding: none;
+	border: 0.1vw solid rgb(249, 200, 230);
+	width: 30vw;
+	font-size: 1vw;
+}
+.edit_form .edit_btn
+{
+	margin: 0 40%;
+}
 .reg_form
 {
 	padding: 0.5vw;
 	text-align: center;
 	position: relative;
-	margin: -7.5vw auto;
+	margin: -2.5vw auto;
 	border: 0.25vw solid rgb(249, 200, 230);
 	border-radius: 1vw;
 	width: 30vw;
-	height: 35vw;
+	height: 27vw;
 }
-.container
+.reg_form h2
 {
-	background: black;
+	font-size: 2vw;
+}
+.br
+{ 
+	display: block; 
+	margin-bottom: 0.5em; 
 }
 .reg_form input
 {
+	padding: none;
 	border: 0.1vw solid rgb(249, 200, 230);
-	width: 260%;
+	width: 30vw;
 	font-size: 1vw;
 }
 .reg_form .reg_btn
 {
-	margin: 0 100%;
+	margin: 0 40%;
 }
 .reg_form .reg_submit_btn
 {
 	color: rgb(249, 200, 230);
 	text-decoration: none;
 }
-td
+.reg_form .account
 {
-	/* position: absolute; */
-	margin: 1vw;
+	font-size: 1.5vw;
 }
 .reg_submit
 {
@@ -247,12 +272,19 @@ button:hover
 }
 .vid_img
 {
+	height: 25.5vw;
+	width: 33.5vw;
 	position: relative;
 	z-index: 1;
-	content:"0a0";
 	border-radius: 2vw;
 	border: .5vw solid rgb(249, 200, 230);
-	margin: -10vh auto;
+	margin: -5vw auto;
+}
+.vid_break
+{
+	position: fixed;
+	width: 100%;
+	height: 2vw;
 }
 .capture_bar
 {
@@ -397,7 +429,7 @@ button:hover
 {
 	border-radius: 5px;
 	padding: 20px;
-	margin: -7.5vw auto;
+	margin: -2.5vw auto;
 	border-top: thick solid rgb(249, 200, 230);
 	height: 80%;
 	width: 80%;
@@ -419,14 +451,82 @@ button:hover
 	font-size: 2.5vw;
 	font-family: fantasy;
 }
+.fa.fa-edit.edit_info
+{
+	margin: 5vw 30vw;
+	cursor: pointer;
+	font-size: 1.2vw;
+}
+.fa.fa-edit.edit_info a
+{
+	color: black;
+	text-decoration: none;
+}
+
+.form-popup
+{
+	display: none;
+	position: fixed;
+	
+	margin: -15vw 31.75vw;
+	border: 3px solid rgb(249, 200, 230);
+	border-radius: .2vw;
+	z-index: 9;
+}
+
+.form-container {
+	max-width: 15vw;
+	padding: .2vw;
+	background-color: white;
+}
+
+.form-container input[type = "email"], .form-container input[type=text], .form-container input[type=password]
+{
+	width: 100%;
+	padding: .2vw;
+	margin: 5px 0 2vw 0;
+	border: none;
+	background: #f1f1f1;
+}
+.form-container label
+{
+	font-size: 1vw;
+}
+
+.form-container input[type = "email"]:focus, .form-container input[type = text]:focus, .form-container input[type=password]:focus
+{
+	background-color: #ddd;
+	outline: none;
+}
+
+.form-container .btn {
+	background-color: rgb(249, 200, 230);
+	color: white;
+	padding: 16px 20px;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	margin-bottom: 1vw;
+	opacity: 0.8;
+}
+
+.form-container .cancel
+{
+	background-color: rgb(249, 200, 230);
+}
+
+.form-container .btn:hover, .open-button:hover
+{
+  opacity: 1;
+}
 .profile_gallery
 {
-	margin: 10vw auto;
+	margin: -25vw auto;
 }
 .fa.fa-cog.profile_settings
 {
 	float: right;
-	top: 1vw;
+	margin: -10vw 8vw;
 	font-size: 2.5vw;
 }
 .fa.fa-cog.profile_settings:hover
@@ -436,19 +536,19 @@ button:hover
 }
 .notif_settings
 {
+	margin-top: -11vw;
 	background: none;
 	border: none;
-	padding-right: 1.5vw;
+	padding-right: .5vw;
 	float: right;
 }
 .notif_container
 {
 	display: block;
 	position: relative;
-	padding-left: 35px;
-	margin-bottom: 12px;
+	padding-left: 2.3vw;
 	cursor: pointer;
-	font-size: 22px;
+	font-size: 2vw;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -465,8 +565,8 @@ button:hover
 	position: absolute;
 	top: 0;
 	left: 0;
-	height: 25px;
-	width: 25px;
+	height: 1.2vw;
+	width: 1.2vw;
 	background-color: #eee;
 	border-radius: 50%;
 }
@@ -490,10 +590,10 @@ button:hover
 }
 .notif_container .checkmark:after
 {
-	top: 9px;
-	left: 9px;
-	width: 8px;
-	height: 8px;
+	top: .4vw;
+	left: .4vw;
+	width: .35vw;
+	height: .35vw;
 	border-radius: 50%;
 	background: white;
 }
@@ -509,7 +609,7 @@ button:hover
 	position: fixed;
 	padding: 1vw;
 	text-align: left;
-	font-size: large;
+	font-size: 1vw;
 	color: black;
 	pointer-events: none;
 }

@@ -10,7 +10,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel = "stylesheet" href = "css/main.css"/>
     <title>Document</title>
-    <script src = './controller/script.js'></script>
 </head>
 <body>
 <div class="wrapper">
@@ -47,6 +46,5 @@
         }
     ?>
 </div>
-<div class = "footer">Cascade</div>
 </body>
 </html>

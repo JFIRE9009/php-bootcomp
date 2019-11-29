@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel = "stylesheet" href = "css/main.css">
     <title>Document</title>
-    <script src = "./controller/cam.js"></script>
 </head>
 <body>
     <?php 
@@ -20,6 +19,7 @@
             <img id = "stickerdisplay"/>
         </div>
         <video class = 'vid_img' autoplay = true id = video>Stream not available...</video>
+        <div class = "vid_break"></div>
         <div class = "capture_bar">
             <input type = file id ="file"/>
             <button id = "capture">Capture</button>
@@ -38,6 +38,5 @@
         echo "<a class = login_msg>Please login to view this page";
     }
      ?>
-    <div class = "footer">Cascade</div>
 </body>
 </html>
