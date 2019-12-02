@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel = "stylesheet" href = "css/main.css">
+    
     <title>Document</title>
 </head>
 <body>
@@ -26,17 +27,18 @@
             <button id = "upload_btn">Upload</button>
             <button id = "cancel_btn">Cancel</button>
         </div>
-    <div class = "stickers">
-        <div><img src = "./img/stickers/kitten.png" id = "kitten" class = "kitten sticker"></div>
-        <div><img src = "./img/stickers/pokemon.png" id = "pokemon" class = "pokemon sticker"></div>
-        <div><img src = "./img/stickers/fox_deer.png" id = "fox_deer" class = "fox_deer sticker"></div>
-        <div><img src = "./img/stickers/whale.png" id = "whale" src="" class = "whale sticker"></div>
-    </div>
-    <?php }
+        <div class = "stickers">
+            <div><img src = "./img/stickers/kitten.png" id = "kitten" class = "kitten sticker"></div>
+            <div><img src = "./img/stickers/pokemon.png" id = "pokemon" class = "pokemon sticker"></div>
+            <div><img src = "./img/stickers/fox_deer.png" id = "fox_deer" class = "fox_deer sticker"></div>
+            <div><img src = "./img/stickers/whale.png" id = "whale" src="" class = "whale sticker"></div>
+        </div>
+        <?php }
     else
     {
         echo "<a class = login_msg>Please login to view this page";
     }
-     ?>
+    ?>
 </body>
+<script src = './controller/cam.js'></script>
 </html>

@@ -1,7 +1,10 @@
 <?php
 	require("../config/connect.php");
 
-	$hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $password = htmlentities($_POST['comment']);
+    $email = htmlentities($_POST['email']);
+
+	$hash = password_hash($password, PASSWORD_BCRYPT);
 	$email = $_POST['email'];
 	try
 	{

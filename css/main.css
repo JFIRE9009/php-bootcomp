@@ -185,6 +185,10 @@ body
 	width: 30vw;
 	height: 27vw;
 }
+.errors
+{
+	color: red;
+}
 .reg_form h2
 {
 	font-size: 2vw;
@@ -381,7 +385,7 @@ button:hover
 	border: .5vw solid rgb(249, 200, 230);
 	background: center;
 	background-size: cover;
-	margin: -10vw auto;
+	margin: -2.5vw auto;
 	padding: 1vw;
 	width: 25vw;
 	height: 20vw;

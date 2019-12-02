@@ -9,19 +9,19 @@
 	$confirmpassword = $_POST['password_2'];
 	
 	if ($password != $confirmpassword)
-		die("Your passwords do not match");
+		die (http_response_code(201));
 	if (!$username || !$firstname || !$lastname || !$email || !$password || !$confirmpassword)
-		die("Please fill in all the fields");
+		$empty_error = 1;
 	if (strlen($password) < 8)
-		die("Your password is too short!");
+		$length_error = 1;
 	if (!filter_var($email, FILTER_VALIDATE_EMAIL))
-		die ("Please enter a valid E-Mail address");
+		$email_error = 1;
 	$safety1 = preg_match('@[A-Z]@', $password);
 	$safety2 = preg_match('@[a-z]@', $password);
 	$safety3 = preg_match('@[0-9]@', $password);
 	$safety4 = preg_match('@[^\w]@', $password);
 	if (!$safety1 || !$safety2 || !$safety3 || !$safety4)
-		die ("Your password must contain at least one lowercase letter, one uppercase letter, and one special character");
+		$safety_error = 1;
 	$hash = password_hash($password, PASSWORD_BCRYPT);
 	$vkey = md5($_POST['username']);
 	$img .= "<img src='./../img/profile_pictures/default.png' alt = 'img'/>";
@@ -58,6 +58,7 @@
 			$query->execute();
 			$_SESSION['id'] = $query->fetchColumn();
 			$_SESSION['vpass'] = $vkey;
+			$email = 1;
 			mail($email, Confirmation, $message, 'From noreply@cascade.com');
 			echo "An email with a verification link has been sent to you.";
 		}

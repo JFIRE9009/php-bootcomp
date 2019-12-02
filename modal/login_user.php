@@ -4,8 +4,8 @@
 	{
 		if (!$_SESSION['loggedin'] || $_SESSION['loggedin'] == false)
 		{
-			$username = $_POST['username'];
-			$password = $_POST['password'];
+			$username = htmlentities($_POST['username']);
+			$password = htmlentities($_POST['password']);
 			
 			$query = $connection->prepare("SELECT * FROM `users` WHERE `username` = ?");
 			$query->execute(array($username));

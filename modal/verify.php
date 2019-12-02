@@ -15,8 +15,8 @@
 			$statement->execute();
 			$stmt = $connection->prepare("SELECT `verified` FROM `users` WHERE `vkey` = ?");
 			$stmt->execute(array($vkey));
-			if ($stmt->fetchColumn() == "1")
-				header("../gallery.php");
+			if ($stmt->fetchColumn() == 1)
+				header("Location: ../gallery.php");
 			else
 				echo "Something went wrong";
 		}

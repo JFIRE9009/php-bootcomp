@@ -54,8 +54,8 @@
                     <label for = "psw">Password</label>
                     <input type = "password" placeholder = "Enter New Password" pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title = "Must contain at least eight characters and one number, one uppercase letter, one lowercase letter, and one special character" name = "password">
 
-                    <button type="submit" class="btn">Login</button>
-                    <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+                    <button type = "submit" class="btn">Edit</button>
+                    <button class = "btn cancel" onclick="closeForm()">Close</button>
                 </form>
             </div>
         </div>

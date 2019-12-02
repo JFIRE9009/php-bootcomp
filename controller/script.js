@@ -126,7 +126,7 @@ function delete_post(pid)
         {
             if (request.status === 200)
             {
-                console.log("deleting: " + pid);
+                request.response();
                 var post = document.getElementById("delete_post-" + pid);
                 post.style.display = "none";
             }
@@ -138,6 +138,27 @@ function delete_post(pid)
         request.send("pid=" + pid);
     }
 }
+
+register = () =>
+{
+    var firstname = document.getElementById("firstname").value;
+    var surname = document.getElementById("surname").value;
+    var email = document.getElementById("email").value;
+    var username = document.getElementById("username").value;
+    var password_1 = document.getElementById("password_1").value;
+    var password_2 = document.getElementById("password_2").value;
+    
+    var request = new XMLHttpRequest();
+    request.onload = () =>
+    {
+        if (request.status === 201)
+            alert("passwords do not mathc");
+    }
+    request.open("POST", "/camagru/modal/input_user.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("firstname=" + firstname + "&lastname=" + surname + "&email=" + email + "&username=" + username + "&password_1=" + password_1 + "&password_2=" + password_2);
+}
+
 window.addEventListener("load", () => 
 {
     var on = document.getElementById("on");
