@@ -2,7 +2,7 @@
     require("./../config/connect.php");
     
     $stickerImg = $_POST['stickerCanvas'];
-    var_dump($img = $_POST['canvas']);
+    $img = $_POST['canvas'];
     $img = base64_decode($img);
     $stickerImg = base64_decode($stickerImg);
     $image = imagecreatefromstring($img);

@@ -11,17 +11,17 @@
 	if ($password != $confirmpassword)
 		die (http_response_code(201));
 	if (!$username || !$firstname || !$lastname || !$email || !$password || !$confirmpassword)
-		$empty_error = 1;
+		die (http_response_code(202));
 	if (strlen($password) < 8)
-		$length_error = 1;
+		die (http_response_code(203));
 	if (!filter_var($email, FILTER_VALIDATE_EMAIL))
-		$email_error = 1;
+		die (http_response_code(204));
 	$safety1 = preg_match('@[A-Z]@', $password);
 	$safety2 = preg_match('@[a-z]@', $password);
 	$safety3 = preg_match('@[0-9]@', $password);
 	$safety4 = preg_match('@[^\w]@', $password);
 	if (!$safety1 || !$safety2 || !$safety3 || !$safety4)
-		$safety_error = 1;
+		die (http_response_code(206));
 	$hash = password_hash($password, PASSWORD_BCRYPT);
 	$vkey = md5($_POST['username']);
 	$img .= "<img src='./../img/profile_pictures/default.png' alt = 'img'/>";
@@ -40,7 +40,7 @@
 
 	try 
 	{
-		$sql = "INSERT INTO `users`(`firstname`, `lastname`, `username`, `email`, `password`, `vkey`, `verified`, `notifications`, `dp`) VALUES (:firstname, :lastname, :username, :email, :hash, :vkey, 0, 0, :dp)";
+		$sql = "INSERT INTO `users`(`firstname`, `lastname`, `username`, `email`, `password`, `vkey`, `verified`, `notifications`, `dp`) VALUES (:firstname, :lastname, :username, :email, :hash, :vkey, 0, 1, :dp)";
 		$statement = $connection->prepare($sql);
 		$statement->bindParam(':firstname', $firstname);
 		$statement->bindParam(':lastname', $lastname);
@@ -68,7 +68,7 @@
 	catch (PDOException $e) 
 	{
 		if ($e->getCode() == 23000)
-			echo "Username or email already in use";
+			die (http_response_code(207));
 		else
 			echo $sql . "<br>" . $e->getMessage();
 	}

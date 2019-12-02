@@ -1,10 +1,9 @@
 <?php
 	require('./database.php');
-	// require('./connect.php');
 	session_start();
 	try
 	{
-		$connection = new PDO("mysql:host=$my_server", $my_user, $my_pswd);
+		$connection = new PDO($my_dbcon, $my_user, $my_pswd);
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "CREATE DATABASE IF NOT EXISTS $my_db";
 		$connection->exec($sql);
@@ -16,7 +15,7 @@
 	}
 	try
 	{
-		$connection = new PDO("mysql:host=$my_server;dbname=$my_db", $my_user, $my_pswd);
+		$connection = new PDO($my_dns, $my_user, $my_pswd);
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "CREATE TABLE IF NOT EXISTS `Users` (
 			`id` INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -39,7 +38,7 @@
 	}
 	try
 	{
-		$connection = new PDO("mysql:host=$my_server;dbname=$my_db", $my_user, $my_pswd);
+		$connection = new PDO($my_dns, $my_user, $my_pswd);
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "CREATE TABLE IF NOT EXISTS  `Gallery` (
 			`postid` INT(11) AUTO_INCREMENT PRIMARY KEY,
@@ -56,7 +55,7 @@
 	}
 	try
 	{
-		$connection = new PDO("mysql:host=$my_server;dbname=$my_db", $my_user, $my_pswd);
+		$connection = new PDO($my_dns, $my_user, $my_pswd);
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "CREATE TABLE IF NOT EXISTS `Likes` (
 			`uid` INT(11) NOT NULL,
@@ -72,7 +71,7 @@
 	}
 	try
 	{
-		$connection = new PDO("mysql:host=$my_server;dbname=$my_db", $my_user, $my_pswd);
+		$connection = new PDO($my_dns, $my_user, $my_pswd);
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "CREATE TABLE IF NOT EXISTS `Comments` (
 			`cid` INT(11) AUTO_INCREMENT PRIMARY KEY,
@@ -88,5 +87,7 @@
 	{
 		echo $sql . "<br>" . $e->getMessage();
 	}
+
 	$connection = null;
+	header("Location: ../index.php");
 ?>

@@ -126,7 +126,6 @@ function delete_post(pid)
         {
             if (request.status === 200)
             {
-                request.response();
                 var post = document.getElementById("delete_post-" + pid);
                 post.style.display = "none";
             }
@@ -139,7 +138,7 @@ function delete_post(pid)
     }
 }
 
-register = () =>
+validate = () =>
 {
     var firstname = document.getElementById("firstname").value;
     var surname = document.getElementById("surname").value;
@@ -147,22 +146,206 @@ register = () =>
     var username = document.getElementById("username").value;
     var password_1 = document.getElementById("password_1").value;
     var password_2 = document.getElementById("password_2").value;
+    var error = document.getElementById("error");
     
     var request = new XMLHttpRequest();
     request.onload = () =>
     {
         if (request.status === 201)
-            alert("passwords do not mathc");
+        {
+            error.innerHTML = "Your passwords do not match";
+            return (false);
+        }
+        if (request.status === 202)
+        {
+            error.innerHTML = "Please fill in all the fields";
+            return (false);
+        }
+        if (request.status === 203)
+        {
+            error.innerHTML = "Your password is too short";
+            return (false);
+        }
+        if (request.status === 204)
+        {
+            error.innerHTML = "Please enter a valid E-Mail address";
+            return (false);
+        }
+        if (request.status === 206)
+        {
+            error.innerHTML = "Your password must contain at least one number, one lowercase letter, one uppercase letter and one special character";
+            return (false);
+        }
+        if (request.status === 207)
+        {
+            error.innerHTML = "Username / E-Mail already in use";
+            return (false);
+        }
+        else
+        {
+            error.innerHTML = "E-Mail sent for verification";
+            setTimeout(function() {
+                location.replace("/camagru/login.php");
+            }, (2 * 1000));
+            return (true);            
+        }
     }
     request.open("POST", "/camagru/modal/input_user.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("firstname=" + firstname + "&lastname=" + surname + "&email=" + email + "&username=" + username + "&password_1=" + password_1 + "&password_2=" + password_2);
 }
 
+login_validate = () =>
+{
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    var error = document.getElementById("error");
+    
+    var request = new XMLHttpRequest();
+    request.onload = () =>
+    {
+        if (request.status === 201)
+        {
+            error.innerHTML = "Please verify your account to proceed";
+            return (false);
+        }
+        if (request.status === 202)
+        {
+            error.innerHTML = "Incorrect Username/Password combination";
+            return (false);
+        }
+        if (request.status === 203)
+        {
+            error.innerHTML = "You are already logged in!";
+            return (false);
+        }
+        else
+        {
+            location.replace("/camagru/index.php");
+            return (true);            
+        }
+    }
+    request.open("POST", "/camagru/modal/login_user.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("username=" + username + "&password=" + password);
+}
+
+reset_validate = () =>
+{
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var error = document.getElementById("error");
+    
+    var request = new XMLHttpRequest();
+    request.onload = () =>
+    {
+        if (request.status === 201)
+        {
+            error.innerHTML = "Your password is too short";
+            return (false);
+        }
+        if (request.status === 202)
+        {
+            error.innerHTML = "Please enter a valid email address";
+            return (false);
+        }
+        if (request.status === 203)
+        {
+            error.innerHTML = "Your password must contain at least one number, one lowercase letter, one uppercase letter and one special character";
+            return (false);
+        }
+        if (request.status === 204)
+        {
+            error.innerHTML = "No user registered under that E-Mail address";
+            return (false);
+        }
+        else
+        {
+            error.innerHTML = "An E-Mail has been sent for verification";
+            return (true);
+        }
+    }
+    request.open("POST", "/camagru/modal/changepassword.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("email=" + email + "&password=" + password);
+}
+
+edit_validate = () =>
+{
+    var email = document.getElementById("email").value;
+    var username = document.getElementById("username").value;
+    var password_1 = document.getElementById("password_1").value;
+    var password_2 = document.getElementById("password_2").value;
+    var error = document.getElementById("error");
+    
+    var request = new XMLHttpRequest();
+    request.onload = () =>
+    {
+        if (request.status === 299)
+        {
+            error.innerHTML = "Please enter your password";
+            return (false);
+        }
+        if (request.status === 201)
+        {
+            error.innerHTML = "Please fill in at least one field";
+            return (false);
+        }
+        if (request.status === 202)
+        {
+            error.innerHTML = "Incorrect password";
+            return (false);
+        }
+        if (request.status === 203)
+        {
+            error.innerHTML = "Username is already in use";
+            return (false);
+        }
+        if (request.status === 204)
+        {
+            error.innerHTML = "Please enter a valid E-Mail address";
+            return (false);
+        }
+        if (request.status === 206)
+        {
+            error.innerHTML = "E-Mail is already in use";
+            return (false);
+        }
+        if (request.status === 207)
+        {
+            error.innerHTML = "Password is too short";
+            return (false);
+        }
+        if (request.status === 208)
+        {
+            error.innerHTML = "Your password must contain at least one number, one lowercase letter, one uppercase letter and one special character";
+            return (false);
+        }
+        if (request.status === 209)
+        {
+            error.innerHTML = "No user registered under that E-Mail address";
+            return (false);
+        }
+        else if (request.status === 500)
+        {
+            console.log(request.responseText);
+        }
+        else
+        {
+            error.innerHTML = "Your details have been changed";            
+            return (true);            
+        }
+    }
+    request.open("POST", "/camagru/modal/edit.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("email=" + email + "&username=" + username + "&password_1=" + password_1+ "&password_2=" + password_2);
+}
+
 window.addEventListener("load", () => 
 {
     var on = document.getElementById("on");
     var off = document.getElementById("off");
+    var notif_log = document.getElementById("notif_log");
     if (on)
     {
         on.addEventListener("click", () =>
@@ -172,8 +355,7 @@ window.addEventListener("load", () =>
             {
                 if (request.status === 200)
                 {
-                    console.log("on");
-                    console.log(request.responseText);
+                    notif_log.innerHTML = "Notifications are on";
                 }
                 else if(request.status === 500)
                     console.log(request.responseText);
@@ -192,8 +374,7 @@ window.addEventListener("load", () =>
             {
                 if (request.status === 200)
                 {
-                    console.log("off");
-                    console.log(request.responseText);
+                    notif_log.innerHTML = "Notifications are off";
                 }
                 else if(request.status === 500)
                     console.log(request.responseText);

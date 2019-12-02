@@ -22,22 +22,18 @@
 						$_SESSION["uid"] = $stmt->fetchColumn();
 						$_SESSION["loggedin"] = true;
 						$_SESSION["username"] = $username;
-						header("location: ../index.php");
 					}
 					else if ($result['verified'] === "0")
-						die ("Please verify your account");
+						die (http_response_code(201)); //verify acc
 				}
 				else
-				{
-					$message = '<label>Wrong Data</label>';
-					echo $message;
-				}
+					die (http_response_code(202)); //Wrong data
 			}
 			else
-				echo "Username/Password combination is not correct";
+				die (http_response_code(202)); //Username / password incorrect
 		}
 		else
-			echo "You are already logged in";
+			die (http_response_code(203)); //already logged in
 	}
 	catch(PDOException $e) {
 		echo "Connecation Failed:" . $sql . "<br>" . $e->getMessage();

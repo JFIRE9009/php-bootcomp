@@ -24,6 +24,69 @@ window.addEventListener("load", () =>
 			});
 		}
 	}
+	if (upload)
+	{
+		upload.addEventListener("change", () => 
+		{
+			if (upload.files.length > 0 && upload.files[0].type.match(/image\/*/))
+			{
+				var file = upload.files[0];
+				var img = new Image();
+				img.addEventListener("load", () => 
+				{
+					img.width = 640;
+					img.height = 480;
+
+					
+					canvas.height = img.height;
+					canvas.width = img.width;
+					stickerCanvas.height = canvas.height;
+					stickerCanvas.width = canvas.width;
+					
+					context.drawImage(img, 0, 0);
+					imageDisplay.src = canvas.toDataURL();
+
+					imageDisplay.src.width = "100vw";
+					imageDisplay.style.border = ".45vw solid rgb(249, 200, 230)";
+					video.style.display = "none";
+					upload.style.display = "none";
+					capture.style.display = "none";
+					upload_btn.style.display = "block";
+					cancel_btn.style.display = "block";
+					
+					var kitten_sticker = document.getElementById("kitten");
+					kitten_sticker.addEventListener("click", (e) => 
+					{
+						stickerContext.drawImage(e.target, 0, 0, 100, 100);
+						stickerDisplay.src = stickerCanvas.toDataURL();
+					});
+					
+					var pokemon_sticker = document.getElementById("pokemon");
+					pokemon_sticker.addEventListener("click", (e) => 
+					{
+						stickerContext.drawImage(e.target, 550, 20, 100, 100);
+						stickerDisplay.src = stickerCanvas.toDataURL();
+					});
+					
+					var fox_deer_sticker = document.getElementById("fox_deer");
+					fox_deer_sticker.addEventListener("click", (e) => 
+					{
+						stickerContext.drawImage(e.target, 25, 390, 100, 100);
+						stickerDisplay.src = stickerCanvas.toDataURL();
+					});
+					
+					var whale_sticker = document.getElementById("whale");
+					whale_sticker.addEventListener("click", (e) => 
+					{
+						stickerContext.drawImage(e.target, 550, 390, 100, 100);
+						stickerDisplay.src = stickerCanvas.toDataURL();
+					});
+					
+				});
+				img.src = URL.createObjectURL(file);
+			}
+		});
+	}
 	if (capture)
 	{
 		capture.addEventListener("click",  () =>
@@ -101,36 +164,6 @@ window.addEventListener("load", () =>
 			request.open("POST", "/camagru/modal/upload.php");
 			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 			request.send("canvas=" + encodeURIComponent(canvas.toDataURL().replace("data:image/png;base64,", "")) + "&stickerCanvas=" + encodeURIComponent(stickerCanvas.toDataURL().replace("data:image/png;base64,","")));
-		});
-	}
-	if (upload)
-	{
-		upload.addEventListener("change", () => 
-		{
-			console.log(upload.files);
-			if (upload.files.length > 0 && upload.files[0].type.match(/image\/*/))
-			{
-				var upload = upload.files[0];
-				var img = new Image();
-				img.addEventListener("load", () => 
-				{
-					img.width = 640;
-					img.height = 480;
-					canvas.height = img.height;
-					canvas.width = img.width;
-
-					context.drawImage(img, 0, 0);
-					imageDisplay.src = canvas.toDataURL();
-					imageDisplay.src.width = "100vw";
-					imageDisplay.style.border = ".45vw solid rgb(249, 200, 230)";
-					video.style.display = "none";
-					upload.style.display = "none";
-					capture.style.display = "none";
-					upload_btn.style.display = "block";
-					cancel_btn.style.display = "block";
-				});
-				img.src = URL.createObjectURL(upload);
-			}
 		});
 	}
 });

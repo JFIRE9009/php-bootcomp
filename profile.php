@@ -23,15 +23,16 @@
             <p class = "profile_name"><?php echo $username = $_SESSION['username']; ?></p>
             <p class =  "fa fa-edit edit_info" onclick = "openForm()">Edit Information</p>
             <i class = "fa fa-cog profile_settings">Notifications</i>
-            <div class = "notif_settings">
-                <?php
-                    $stmt = $connection->prepare("SELECT notifications FROM users WHERE username = ?");
-                    $stmt->execute(array($username));
-                    if ($stmt->fetchColumn() == "1")
-                        $notif = 1;
-                    else if ($stmt->fetchColumn() == "0")
-                        $notif = 0;
+            <?php
+            $stmt = $connection->prepare("SELECT notifications FROM users WHERE username = ?");
+            $stmt->execute(array($username));
+            if ($stmt->fetchColumn() == "1")
+                $notifs = 1;
+            else if ($stmt->fetchColumn() == "0")
+                $notifs = 0;
                 ?>
+            <div id = "notif_log"><?php if ($notifs === 1) {?> Notifications are on <?php } elseif ($notifs === 0) { ?> Notifications are off <?php } ?> </div>
+            <div class = "notif_settings">
                 <label class = "notif_container">On
                     <input id = "on" type = "radio" name = "radio">
                     <span class = "checkmark"></span>
@@ -41,22 +42,26 @@
                     <span class = "checkmark"></span>
                 </label>
             </div>
-            <div class="form-popup" id="myForm">
-                <form method = "POST" action = "./modal/edit.php" class = "form-container">
+            <div class = "form-popup" id = "myForm">
+                <div class = "form-container">
                     <h1>Enter Desired Changes</h1>
 
+                    <div id = "error"> </div>
                     <label for = "email">Email</label>
-                    <input type = "email" placeholder = "Enter New Email" name = "email">
+                    <input type = "email" id = "email" placeholder = "Enter New Email" name = "email">
 
                     <label for = "usr">Username</label>
-                    <input type = "text" placeholder = "Enter New Username"  name = "username">
+                    <input type = "text" id = "username" placeholder = "Enter New Username"  name = "username">
 
                     <label for = "psw">Password</label>
-                    <input type = "password" placeholder = "Enter New Password" pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title = "Must contain at least eight characters and one number, one uppercase letter, one lowercase letter, and one special character" name = "password">
+                    <input type = "password" id = "password_1" placeholder = "Enter New Password" pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title = "Must contain at least eight characters and one number, one uppercase letter, one lowercase letter, and one special character" name = "password">
 
-                    <button type = "submit" class="btn">Edit</button>
-                    <button class = "btn cancel" onclick="closeForm()">Close</button>
-                </form>
+                    <label for = "psw">Confirm Changes</label>
+                    <input type = "password" id = "password_2" placeholder = "Enter Old Password" pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title = "Must contain at least eight characters and one number, one uppercase letter, one lowercase letter, and one special character" name = "password">
+
+                    <button onclick = "edit_validate()" class = "btn">Edit</button>
+                    <button class = "btn cancel" onclick = "closeForm()">Close</button>
+                </div>
             </div>
         </div>
     </div>
